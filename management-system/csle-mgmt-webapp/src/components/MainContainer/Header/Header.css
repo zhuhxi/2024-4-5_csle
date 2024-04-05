@@ -1,0 +1,70 @@
+.Header {
+    color: black !important;
+}
+
+.subtitle {
+    font-style: italic;
+    color: black !important;
+}
+.title {
+    margin-top:-30px;
+    font-weight: bold;
+    color: black !important;
+}
+
+.navtabsheader{
+    margin-top:18px;
+    font-size: 10px;
+    color: black !important;
+}
+
+.jumbotron {
+    height:70px;
+    margin-top:-9px;
+    color: black !important;
+}
+
+.navdropdownheader {
+    color: black !important;
+}
+
+.navtablabel {
+    color: black !important;
+}
+
+.active {
+    font-weight: bolder;
+}
+
+.dropdown-item {
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 500px) and (min-width: 300px) {
+    .jumbotron {
+        height:120px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .jumbotron {
+        height:195px;
+    }
+}
+
+.csleLogo {
+    margin-left:150px;
+    margin-top:-19px;
+    position:absolute;
+}
+
+.csleVersion {
+    position:absolute;
+    left: 15px;
+    top:0;
+    font-size: 13px;
+}
+
+.headerIcon {
+    margin-left: 12px;
+}

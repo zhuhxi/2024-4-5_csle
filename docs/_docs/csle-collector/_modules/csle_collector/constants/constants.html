@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>csle_collector.constants.constants &mdash; csle-collector 0.5.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> csle-collector
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.client_manager.html">csle_collector.client_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.constants.html">csle_collector.constants package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.docker_stats_manager.html">csle_collector.docker_stats_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.elk_manager.html">csle_collector.elk_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.host_manager.html">csle_collector.host_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.kafka_manager.html">csle_collector.kafka_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.ossec_ids_manager.html">csle_collector.ossec_ids_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.snort_ids_manager.html">csle_collector.snort_ids_manager package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../csle_collector.traffic_manager.html">csle_collector.traffic_manager package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">csle-collector</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>csle_collector.constants.constants</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for csle_collector.constants.constants</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Constants for csle collector</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">LATEST_VERSION</span> <span class="o">=</span> <span class="s2">&quot;latest&quot;</span>
+<span class="n">INSTALL</span> <span class="o">=</span> <span class="s2">&quot;sudo /root/miniconda3/bin/pip install -U --no-cache-dir csle-collector &quot;</span>
+
+
+<div class="viewcode-block" id="DICT_PROPERTIES"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.DICT_PROPERTIES">[docs]</a><span class="k">class</span> <span class="nc">DICT_PROPERTIES</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    String constants representing dict properties</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">RUNNING</span> <span class="o">=</span> <span class="s2">&quot;running&quot;</span>
+    <span class="n">TOPICS</span> <span class="o">=</span> <span class="s2">&quot;topics&quot;</span></div>
+
+
+<div class="viewcode-block" id="HTTP"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.HTTP">[docs]</a><span class="k">class</span> <span class="nc">HTTP</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to HTTP</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">HTTP_PROTOCOL_PREFIX</span> <span class="o">=</span> <span class="s2">&quot;http://&quot;</span>
+    <span class="n">LOCALHOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">GET</span> <span class="o">=</span> <span class="s2">&quot;GET&quot;</span>
+    <span class="n">PUT</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="n">POST</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="n">DELETE</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="n">APPLICATION_JSON_TYPE</span> <span class="o">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="n">OK_RESPONSE_CODE</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">INTERNAL_SERVER_ERROR_RESPONSE_CODE</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">BAD_REQUEST_RESPONSE_CODE</span> <span class="o">=</span> <span class="mi">400</span></div>
+
+
+<div class="viewcode-block" id="BEATS"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.BEATS">[docs]</a><span class="k">class</span> <span class="nc">BEATS</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to beats</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">RELOAD_ENABLED_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;reload.enabled&quot;</span>
+    <span class="n">SETUP_TEMPLATE_SETTINGS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;setup.template.settings&quot;</span>
+    <span class="n">INDEX_NUM_SHARDS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;index.number_of_shards&quot;</span>
+    <span class="n">SETUP_KIBANA_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;setup.kibana&quot;</span>
+    <span class="n">HOST_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;host&quot;</span>
+    <span class="n">HOSTS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;hosts&quot;</span>
+    <span class="n">ELASTIC_OUTPUT_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;output.elasticsearch&quot;</span>
+    <span class="n">PROCESSORS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;processors&quot;</span>
+    <span class="n">ADD_HOST_METADATA_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;add_host_metadata&quot;</span>
+    <span class="n">WHEN_NOT_CONTAIN_TAGS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;when.not.contains.tags&quot;</span>
+    <span class="n">FORWARDED_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;forwarded&quot;</span>
+    <span class="n">MODULE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;module&quot;</span>
+    <span class="n">LOG_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span>
+    <span class="n">SYSLOG_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;syslog&quot;</span>
+    <span class="n">AUTH_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;auth&quot;</span>
+    <span class="n">SLOWLOG_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;slowlog&quot;</span>
+    <span class="n">AUDIT_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;audit&quot;</span>
+    <span class="n">SERVER_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;server&quot;</span>
+    <span class="n">VAR_INPUT_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;var.input&quot;</span>
+    <span class="n">VAR_PATHS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;var.paths&quot;</span>
+    <span class="n">FILE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;file&quot;</span>
+    <span class="n">TYPE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;type&quot;</span>
+    <span class="n">FILESTREAM_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;filestream&quot;</span>
+    <span class="n">KAFKA_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;kafka&quot;</span>
+    <span class="n">TOPICS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;topics&quot;</span>
+    <span class="n">GROUP_ID_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;group_id&quot;</span>
+    <span class="n">ID_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span>
+    <span class="n">NAME_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span>
+    <span class="n">ENABLED_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;enabled&quot;</span>
+    <span class="n">PATHS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;paths&quot;</span>
+    <span class="n">PATH_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;path&quot;</span>
+    <span class="n">PERIOD_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;period&quot;</span>
+    <span class="n">METRICSETS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;metricsets&quot;</span></div>
+
+
+<div class="viewcode-block" id="FILEBEAT"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.FILEBEAT">[docs]</a><span class="k">class</span> <span class="nc">FILEBEAT</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to Filebeat</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">FILEBEAT_GROUP_ID</span> <span class="o">=</span> <span class="s2">&quot;filebeat&quot;</span>
+    <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/filebeat/&quot;</span>
+    <span class="n">CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/etc/filebeat/filebeat.yml&quot;</span>
+    <span class="n">SETUP_CMD</span> <span class="o">=</span> <span class="s2">&quot;filebeat setup -e&quot;</span>
+    <span class="n">SNORT_MODULE</span> <span class="o">=</span> <span class="s2">&quot;snort&quot;</span>
+    <span class="n">ELASTICSEARCH_MODULE</span> <span class="o">=</span> <span class="s2">&quot;elasticsearch&quot;</span>
+    <span class="n">KIBANA_MODULE</span> <span class="o">=</span> <span class="s2">&quot;kibana&quot;</span>
+    <span class="n">SYSTEM_MODULE</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span>
+    <span class="n">KAFKA_MODULE</span> <span class="o">=</span> <span class="s2">&quot;kafka&quot;</span>
+    <span class="n">LOGSTASH_MODULE</span> <span class="o">=</span> <span class="s2">&quot;logstash&quot;</span>
+    <span class="n">ENABLE_MODULE_CMD</span> <span class="o">=</span> <span class="s2">&quot;filebeat modules enable </span><span class="si">{}</span><span class="s2">&quot;</span>
+    <span class="n">MODULES_CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/filebeat/modules.d/&quot;</span>
+    <span class="n">SNORT_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;snort.yml&quot;</span>
+    <span class="n">LOGSTASH_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;logstash.yml&quot;</span>
+    <span class="n">KIBANA_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;kibana.yml&quot;</span>
+    <span class="n">SYSTEM_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;system.yml&quot;</span>
+    <span class="n">KAFKA_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;kafka.yml&quot;</span>
+    <span class="n">ELASTICSEARCH_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;elasticsearch.yml&quot;</span>
+    <span class="n">INPUTS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;filebeat.inputs&quot;</span>
+    <span class="n">MODULES_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;filebeat.config.modules&quot;</span>
+    <span class="n">FILEBEAT_STATUS</span> <span class="o">=</span> <span class="s2">&quot;sudo service filebeat status&quot;</span>
+    <span class="n">FILEBEAT_START</span> <span class="o">=</span> <span class="s2">&quot;sudo service filebeat start&quot;</span>
+    <span class="n">FILEBEAT_STOP</span> <span class="o">=</span> <span class="s2">&quot;sudo service filebeat stop&quot;</span></div>
+
+
+<div class="viewcode-block" id="PACKETBEAT"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.PACKETBEAT">[docs]</a><span class="k">class</span> <span class="nc">PACKETBEAT</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to Packetbeat</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">FILEBEAT_GROUP_ID</span> <span class="o">=</span> <span class="s2">&quot;packetbeat&quot;</span>
+    <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/packetbeat/&quot;</span>
+    <span class="n">CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/etc/packetbeat/packetbeat.yml&quot;</span>
+    <span class="n">SETUP_CMD</span> <span class="o">=</span> <span class="s2">&quot;packetbeat setup -e&quot;</span>
+    <span class="n">PACKETBEAT_STATUS</span> <span class="o">=</span> <span class="s2">&quot;sudo service packetbeat status&quot;</span>
+    <span class="n">PACKETBEAT_START</span> <span class="o">=</span> <span class="s2">&quot;sudo service packetbeat start&quot;</span>
+    <span class="n">PACKETBEAT_STOP</span> <span class="o">=</span> <span class="s2">&quot;sudo service packetbeat stop&quot;</span>
+    <span class="n">INTERFACES_TYPE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;packetbeat.interfaces.type&quot;</span>
+    <span class="n">AF_PACKET_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;af_packet&quot;</span>
+    <span class="n">ANY_DEVICE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span>
+    <span class="n">INTERFACES_DEVICE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;packetbeat.interfaces.device&quot;</span>
+    <span class="n">FLOWS</span> <span class="o">=</span> <span class="s2">&quot;packetbeat.flows&quot;</span>
+    <span class="n">TIMEOUT_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;timeout&quot;</span>
+    <span class="n">PROTOCOLS</span> <span class="o">=</span> <span class="s2">&quot;packetbeat.protocols&quot;</span>
+    <span class="n">ICMP_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;icmp&quot;</span>
+    <span class="n">AMQP_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;amqp&quot;</span>
+    <span class="n">PORTS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;ports&quot;</span>
+    <span class="n">AMQP_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5672</span><span class="p">]</span>
+    <span class="n">CASSANDRA_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;cassandra&quot;</span>
+    <span class="n">CASSANDRA_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9042</span><span class="p">]</span>
+    <span class="n">DHCPV4_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;dhcpv4&quot;</span>
+    <span class="n">DHCPV4_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">67</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+    <span class="n">DNS_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;dns&quot;</span>
+    <span class="n">DNS_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">]</span>
+    <span class="n">HTTP_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;http&quot;</span>
+    <span class="n">HTTP_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">8002</span><span class="p">]</span>
+    <span class="n">MEMCACHE_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;memcache&quot;</span>
+    <span class="n">MEMCACHE_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11211</span><span class="p">]</span>
+    <span class="n">MYSQL_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;mysql&quot;</span>
+    <span class="n">MYSQL_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3306</span><span class="p">,</span> <span class="mi">3307</span><span class="p">]</span>
+    <span class="n">PGSQL_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;pgsql&quot;</span>
+    <span class="n">PGSQL_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5432</span><span class="p">]</span>
+    <span class="n">REDIS_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;redis&quot;</span>
+    <span class="n">REDIS_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6379</span><span class="p">]</span>
+    <span class="n">THRIFT_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;thrift&quot;</span>
+    <span class="n">THRIFT_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9090</span><span class="p">]</span>
+    <span class="n">MONGODB_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;mongodb&quot;</span>
+    <span class="n">MONGODB_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">27017</span><span class="p">]</span>
+    <span class="n">NFS_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;nfs&quot;</span>
+    <span class="n">NFS_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2049</span><span class="p">]</span>
+    <span class="n">TLS_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;tls&quot;</span>
+    <span class="n">TLS_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">443</span><span class="p">,</span> <span class="mi">993</span><span class="p">,</span> <span class="mi">995</span><span class="p">,</span> <span class="mi">5223</span><span class="p">,</span> <span class="mi">8443</span><span class="p">,</span> <span class="mi">8883</span><span class="p">,</span> <span class="mi">9243</span><span class="p">]</span>
+    <span class="n">SIP_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;sip&quot;</span>
+    <span class="n">SIP_PORTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9243</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="METRICBEAT"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.METRICBEAT">[docs]</a><span class="k">class</span> <span class="nc">METRICBEAT</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to Metricbeat</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/metricbeat/&quot;</span>
+    <span class="n">CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/etc/metricbeat/metricbeat.yml&quot;</span>
+    <span class="n">SETUP_CMD</span> <span class="o">=</span> <span class="s2">&quot;metricbeat setup -e&quot;</span>
+    <span class="n">ELASTICSEARCH_MODULE</span> <span class="o">=</span> <span class="s2">&quot;elasticsearch&quot;</span>
+    <span class="n">KIBANA_MODULE</span> <span class="o">=</span> <span class="s2">&quot;kibana&quot;</span>
+    <span class="n">SYSTEM_MODULE</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span>
+    <span class="n">LINUX_MODULE</span> <span class="o">=</span> <span class="s2">&quot;linux&quot;</span>
+    <span class="n">KAFKA_MODULE</span> <span class="o">=</span> <span class="s2">&quot;kafka&quot;</span>
+    <span class="n">LOGSTASH_MODULE</span> <span class="o">=</span> <span class="s2">&quot;logstash&quot;</span>
+    <span class="n">ENABLE_MODULE_CMD</span> <span class="o">=</span> <span class="s2">&quot;metricbeat modules enable </span><span class="si">{}</span><span class="s2">&quot;</span>
+    <span class="n">MODULES_CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/metricbeat/modules.d/&quot;</span>
+    <span class="n">SNORT_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;snort.yml&quot;</span>
+    <span class="n">LOGSTASH_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;logstash.yml&quot;</span>
+    <span class="n">KIBANA_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;kibana.yml&quot;</span>
+    <span class="n">SYSTEM_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;system.yml&quot;</span>
+    <span class="n">LINUX_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;linux.yml&quot;</span>
+    <span class="n">KAFKA_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;kafka.yml&quot;</span>
+    <span class="n">ELASTICSEARCH_MODULE_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;elasticsearch.yml&quot;</span>
+    <span class="n">MODULES_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;metricbeat.config.modules&quot;</span>
+    <span class="n">METRICBEAT_STATUS</span> <span class="o">=</span> <span class="s2">&quot;sudo service metricbeat status&quot;</span>
+    <span class="n">METRICBEAT_START</span> <span class="o">=</span> <span class="s2">&quot;sudo service metricbeat start&quot;</span>
+    <span class="n">METRICBEAT_STOP</span> <span class="o">=</span> <span class="s2">&quot;sudo service metricbeat stop&quot;</span>
+    <span class="n">PROCESSES_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;processes&quot;</span>
+    <span class="n">CPU_METRICS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;cpu.metrics&quot;</span>
+    <span class="n">CORE_METRICS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;core.metrics&quot;</span>
+    <span class="n">PERCENTAGES_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;percentages&quot;</span>
+    <span class="n">NORMALIZED_PERCENTAGES_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;normalized_percentages&quot;</span>
+    <span class="n">CPU_METRIC</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
+    <span class="n">LOAD_METRIC</span> <span class="o">=</span> <span class="s2">&quot;load&quot;</span>
+    <span class="n">MEMORY_METRIC</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span>
+    <span class="n">NETWORK_METRIC</span> <span class="o">=</span> <span class="s2">&quot;network&quot;</span>
+    <span class="n">PROCESS_METRIC</span> <span class="o">=</span> <span class="s2">&quot;process&quot;</span>
+    <span class="n">PROCESS_SUMMARY_METRIC</span> <span class="o">=</span> <span class="s2">&quot;process_summary&quot;</span>
+    <span class="n">SOCKET_SUMMARY_METRIC</span> <span class="o">=</span> <span class="s2">&quot;socket_summary&quot;</span>
+    <span class="n">PAGEINFO_METRIC</span> <span class="o">=</span> <span class="s2">&quot;pageinfo&quot;</span>
+    <span class="n">SUMMARY_METRIC</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span></div>
+
+
+<div class="viewcode-block" id="HEARTBEAT"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.HEARTBEAT">[docs]</a><span class="k">class</span> <span class="nc">HEARTBEAT</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to heartbeat</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/etc/heartbeat/&quot;</span>
+    <span class="n">CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/etc/heartbeat/heartbeat.yml&quot;</span>
+    <span class="n">SETUP_CMD</span> <span class="o">=</span> <span class="s2">&quot;heartbeat setup -e&quot;</span>
+    <span class="n">HEARTBEAT_STATUS</span> <span class="o">=</span> <span class="s2">&quot;sudo service heartbeat-elastic status&quot;</span>
+    <span class="n">HEARTBEAT_START</span> <span class="o">=</span> <span class="s2">&quot;sudo service heartbeat-elastic start&quot;</span>
+    <span class="n">HEARTBEAT_STOP</span> <span class="o">=</span> <span class="s2">&quot;sudo service heartbeat-elastic stop&quot;</span>
+    <span class="n">SCHEDULE_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;schedule&quot;</span>
+    <span class="n">ICMP_MONITOR_TYPE</span> <span class="o">=</span> <span class="s2">&quot;icmp&quot;</span>
+    <span class="n">HEARTBEAT_MONITORS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;heartbeat.monitors&quot;</span>
+    <span class="n">CSLE_MONITOR_SERVICE_NAME</span> <span class="o">=</span> <span class="s2">&quot;csle-topology-connection-service&quot;</span>
+    <span class="n">CSLE_MONITOR_SERVICE_ID</span> <span class="o">=</span> <span class="s2">&quot;csle-topology-connection-service-id&quot;</span></div>
+
+
+<div class="viewcode-block" id="GRPC"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.GRPC">[docs]</a><span class="k">class</span> <span class="nc">GRPC</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to GRPC</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TIMEOUT_SECONDS</span> <span class="o">=</span> <span class="mi">60</span>
+    <span class="n">CONFIG_TIMEOUT_SECONDS</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">OPERATION_TIMEOUT_SECONDS</span> <span class="o">=</span> <span class="mi">30000</span></div>
+
+
+<div class="viewcode-block" id="SYSTEM"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.SYSTEM">[docs]</a><span class="k">class</span> <span class="nc">SYSTEM</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to system</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">AUTH_LOG</span> <span class="o">=</span> <span class="s2">&quot;/var/log/auth.log&quot;</span>
+    <span class="n">SYSLOG</span> <span class="o">=</span> <span class="s2">&quot;/var/log/syslog&quot;</span></div>
+
+
+<div class="viewcode-block" id="LOG_FILES"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.LOG_FILES">[docs]</a><span class="k">class</span> <span class="nc">LOG_FILES</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the log files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KAFKA_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;kafka_manager.log&quot;</span>
+    <span class="n">KAFKA_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">OSSEC_IDS_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;ossec_ids_manager.log&quot;</span>
+    <span class="n">OSSEC_IDS_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">SNORT_IDS_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;snort_ids_manager.log&quot;</span>
+    <span class="n">SNORT_IDS_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">ELK_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;elk_manager.log&quot;</span>
+    <span class="n">ELK_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">DOCKER_STATS_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;docker_stats_manager.log&quot;</span>
+    <span class="n">CLUSTER_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;cluster_manager.log&quot;</span>
+    <span class="n">DOCKER_STATS_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/var/log/csle/&quot;</span>
+    <span class="n">CLUSTER_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/var/log/csle/&quot;</span>
+    <span class="n">HOST_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;host_manager.log&quot;</span>
+    <span class="n">HOST_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">CLIENT_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;client_manager.log&quot;</span>
+    <span class="n">CLIENT_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">TRAFFIC_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;traffic_manager.log&quot;</span>
+    <span class="n">TRAFFIC_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">KAFKA_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/kafka/logs/server.log&quot;</span>
+    <span class="n">RYU_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;ryu_manager.log&quot;</span>
+    <span class="n">RYU_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">MINBFT_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;minbft_manager.log&quot;</span>
+    <span class="n">MINBFT_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">MINBFT_CLIENT_MANAGER_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;minbft_manager.log&quot;</span>
+    <span class="n">MINBFT_CLIENT_MANAGER_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">DEFAULT_LOG_FILE_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/*.log&quot;</span><span class="p">,</span> <span class="s2">&quot;/var/log/*.log&quot;</span><span class="p">,</span> <span class="s2">&quot;/var/log/*/*.log&quot;</span><span class="p">,</span> <span class="s2">&quot;/var/log/*/*/*.log&quot;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="MANAGER_PORTS"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.MANAGER_PORTS">[docs]</a><span class="k">class</span> <span class="nc">MANAGER_PORTS</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the ports of managers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TRAFFIC_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50043</span>
+    <span class="n">CLIENT_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50044</span>
+    <span class="n">SDN_CONTROLLER_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50042</span>
+    <span class="n">HOST_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50049</span>
+    <span class="n">SNORT_IDS_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50048</span>
+    <span class="n">OSSEC_IDS_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50047</span>
+    <span class="n">DOCKER_STATS_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50046</span>
+    <span class="n">ELK_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50045</span>
+    <span class="n">KAFKA_MANAGER_DEFAULT_PORT</span> <span class="o">=</span> <span class="mi">50051</span></div>
+
+
+<div class="viewcode-block" id="GRPC_WORKERS"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.GRPC_WORKERS">[docs]</a><span class="k">class</span> <span class="nc">GRPC_WORKERS</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the number of GRPC workers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">DEFAULT_MAX_NUM_WORKERS</span> <span class="o">=</span> <span class="mi">10</span></div>
+
+
+<div class="viewcode-block" id="TRAFFIC_GENERATOR"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.TRAFFIC_GENERATOR">[docs]</a><span class="k">class</span> <span class="nc">TRAFFIC_GENERATOR</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the traffic generator</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">START_TRAFFIC_GENERATOR_CMD</span> <span class="o">=</span> <span class="s2">&quot;sudo nohup /traffic_generator.sh &amp;&quot;</span>
+    <span class="n">TRAFFIC_GENERATOR_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;traffic_generator.sh&quot;</span>
+    <span class="n">CREATE_TRAFFIC_GENERATOR_FILE</span> <span class="o">=</span> <span class="s2">&quot;sudo touch /traffic_generator.sh&quot;</span>
+    <span class="n">MAKE_TRAFFIC_GENERATOR_FILE_EXECUTABLE</span> <span class="o">=</span> <span class="s2">&quot;sudo chmod 777 /traffic_generator.sh&quot;</span>
+    <span class="n">REMOVE_OLD_TRAFFIC_GENERATOR_FILE</span> <span class="o">=</span> <span class="s2">&quot;sudo rm -f /traffic_generator.sh&quot;</span>
+    <span class="n">CHECK_IF_TRAFFIC_GENERATOR_IS_RUNNING</span> <span class="o">=</span> <span class="s2">&quot;ps -aux | grep traffic_generator&quot;</span>
+    <span class="n">STOP_TRAFFIC_GENERATOR</span> <span class="o">=</span> <span class="s2">&quot;sudo pkill -f traffic_generator.sh&quot;</span></div>
+
+
+<div class="viewcode-block" id="DOCKER_STATS"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.DOCKER_STATS">[docs]</a><span class="k">class</span> <span class="nc">DOCKER_STATS</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to Docker stats</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CPU_STATS</span> <span class="o">=</span> <span class="s2">&quot;cpu_stats&quot;</span>
+    <span class="n">CPU_USAGE</span> <span class="o">=</span> <span class="s2">&quot;cpu_usage&quot;</span>
+    <span class="n">PERCPU_USAGE</span> <span class="o">=</span> <span class="s2">&quot;percpu_usage&quot;</span>
+    <span class="n">PRECPU_STATS</span> <span class="o">=</span> <span class="s2">&quot;precpu_stats&quot;</span>
+    <span class="n">TOTAL_USAGE</span> <span class="o">=</span> <span class="s2">&quot;total_usage&quot;</span>
+    <span class="n">SYSTEM_CPU_USAGE</span> <span class="o">=</span> <span class="s2">&quot;system_cpu_usage&quot;</span>
+    <span class="n">ONLINE_CPUS</span> <span class="o">=</span> <span class="s2">&quot;online_cpus&quot;</span>
+    <span class="n">BLKIO_STATS</span> <span class="o">=</span> <span class="s2">&quot;blkio_stats&quot;</span>
+    <span class="n">IO_SERVICE_BYTES_RECURSIVE</span> <span class="o">=</span> <span class="s2">&quot;io_service_bytes_recursive&quot;</span>
+    <span class="n">OP</span> <span class="o">=</span> <span class="s2">&quot;op&quot;</span>
+    <span class="n">READ</span> <span class="o">=</span> <span class="s2">&quot;Read&quot;</span>
+    <span class="n">VALUE</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+    <span class="n">WRITE</span> <span class="o">=</span> <span class="s2">&quot;Write&quot;</span>
+    <span class="n">NETWORKS</span> <span class="o">=</span> <span class="s2">&quot;networks&quot;</span>
+    <span class="n">RX_BYTES</span> <span class="o">=</span> <span class="s2">&quot;rx_bytes&quot;</span>
+    <span class="n">TX_BYTES</span> <span class="o">=</span> <span class="s2">&quot;tx_bytes&quot;</span>
+    <span class="n">MEMORY_STATS</span> <span class="o">=</span> <span class="s2">&quot;memory_stats&quot;</span>
+    <span class="n">USAGE</span> <span class="o">=</span> <span class="s2">&quot;usage&quot;</span>
+    <span class="n">LIMIT</span> <span class="o">=</span> <span class="s2">&quot;limit&quot;</span>
+    <span class="n">PIDS</span> <span class="o">=</span> <span class="s2">&quot;pids&quot;</span>
+    <span class="n">TIMESTAMP</span> <span class="o">=</span> <span class="s2">&quot;timestamp&quot;</span>
+    <span class="n">CPU_PERCENT</span> <span class="o">=</span> <span class="s2">&quot;cpu_percent&quot;</span>
+    <span class="n">MEM_CURRENT</span> <span class="o">=</span> <span class="s2">&quot;mem_current&quot;</span>
+    <span class="n">MEM_TOTAL</span> <span class="o">=</span> <span class="s2">&quot;mem_total&quot;</span>
+    <span class="n">MEM_PERCENT</span> <span class="o">=</span> <span class="s2">&quot;mem_percent&quot;</span>
+    <span class="n">BLK_READ</span> <span class="o">=</span> <span class="s2">&quot;blk_read&quot;</span>
+    <span class="n">BLK_WRITE</span> <span class="o">=</span> <span class="s2">&quot;blk_write&quot;</span>
+    <span class="n">NET_RX</span> <span class="o">=</span> <span class="s2">&quot;net_rx&quot;</span>
+    <span class="n">NET_TX</span> <span class="o">=</span> <span class="s2">&quot;net_tx&quot;</span>
+    <span class="n">PIDS_STATS</span> <span class="o">=</span> <span class="s2">&quot;pids_stats&quot;</span>
+    <span class="n">CURRENT</span> <span class="o">=</span> <span class="s2">&quot;current&quot;</span>
+    <span class="n">CONTAINER_NAME</span> <span class="o">=</span> <span class="s2">&quot;container_name&quot;</span>
+    <span class="n">CONTAINER_ID</span> <span class="o">=</span> <span class="s2">&quot;container_id&quot;</span>
+    <span class="n">CONTAINER_IP</span> <span class="o">=</span> <span class="s2">&quot;container_ip&quot;</span>
+    <span class="n">UNIX_DOCKER_SOCK_URL</span> <span class="o">=</span> <span class="s2">&quot;unix://var/run/docker.sock&quot;</span></div>
+
+
+<div class="viewcode-block" id="OSSEC"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.OSSEC">[docs]</a><span class="k">class</span> <span class="nc">OSSEC</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the OSSEC HIDS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">MAX_ALERTS</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">OSSEC_ALERTS_FILE</span> <span class="o">=</span> <span class="s2">&quot;/var/ossec/alerts/alerts.log&quot;</span>
+    <span class="n">OSSEC_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/var/ossec/logs/ossec.log&quot;</span>
+    <span class="n">TAIL_ALERTS_COMMAND</span> <span class="o">=</span> <span class="s2">&quot;sudo tail -&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">MAX_ALERTS</span><span class="p">)</span>
+    <span class="n">ALERTLINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\*\* Alert (\d+.\d+)*: - (\w+.+)&quot;</span><span class="p">)</span>
+    <span class="n">HOSTLINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+ \w+ \d+ \d+:\d+:\d+ \((\w+.+)\) (\d+.\d+.\d+.\d+)&quot;</span><span class="p">)</span>
+    <span class="n">SERVHOSTLINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+ \w+ \d+ \d+:\d+:\d+ (\w+)&quot;</span><span class="p">)</span>
+    <span class="n">RULELINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Rule: (\d+)* \(level (\d+)\) -&gt; &#39;(\w+.+)&#39;&quot;</span><span class="p">)</span>
+    <span class="n">SRCIPLINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Src IP: (\d+.\d+.\d+.\d+)&quot;</span><span class="p">)</span>
+    <span class="n">USERLINE_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;User: (\w+)&quot;</span><span class="p">)</span>
+    <span class="n">DATELINEREGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+ \w+ \d+ \d+:\d+:\d+&quot;</span><span class="p">)</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Ignored - No action taken. Used to avoid false positives. &quot;</span> \
+                                      <span class="s2">&quot;These rules are scanned before all the others. &quot;</span> \
+                                      <span class="s2">&quot;They include events with no security relevance.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;System low priority notification - System notification or status messages. &quot;</span> \
+                                      <span class="s2">&quot;They have no security relevance.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Successful/Authorized events - They include successful login attempts, &quot;</span> \
+                                      <span class="s2">&quot;firewall allow events, etc.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;System low priority error - Errors related to bad configurations or &quot;</span> \
+                                      <span class="s2">&quot;unused devices/applications. They have no security relevance and are usually &quot;</span> \
+                                      <span class="s2">&quot;caused by default installations or software testing.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;User generated error - They include missed passwords, denied actions, etc. &quot;</span> \
+                                      <span class="s2">&quot;By itself they have no security relevance.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Low relevance attack - They indicate a worm or a virus that have no affect to &quot;</span> \
+                                      <span class="s2">&quot;the system (like code red for apache servers, etc). &quot;</span> \
+                                      <span class="s2">&quot;They also include frequently IDS events and frequently errors.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&#39;Bad word&#39; matching. They include words like &#39;bad&#39;, &quot;</span> \
+                                      <span class="s2">&quot;&#39;error&#39;, etc. These events &quot;</span> \
+                                      <span class="s2">&quot;are most of the time unclassified and may have some security relevance.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;First time seen - Include first time seen events. First time an IDS event is &quot;</span> \
+                                      <span class="s2">&quot;fired or the first time an user logged in. If you just started using OSSEC &quot;</span> \
+                                      <span class="s2">&quot;HIDS these messages will probably be frequently. After a while they should &quot;</span> \
+                                      <span class="s2">&quot;go away, It also includes security relevant actions &quot;</span> \
+                                      <span class="s2">&quot;(like the starting of a sniffer or something like that).&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Error from invalid source - Include attempts to login as an unknown user or &quot;</span> \
+                                      <span class="s2">&quot;from an invalid source. May have security relevance (specially if repeated). &quot;</span> \
+                                      <span class="s2">&quot;They also include errors regarding the “admin” (root) account.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Multiple user generated errors - They include multiple bad passwords, &quot;</span> \
+                                       <span class="s2">&quot;multiple failed logins, etc. &quot;</span> \
+                                       <span class="s2">&quot;They may indicate an attack or may just be that a user &quot;</span> \
+                                       <span class="s2">&quot;just forgot his credentials.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Integrity checking warning - They include messages regarding the &quot;</span> \
+                                       <span class="s2">&quot;modification of binaries or the presence of rootkits (by rootcheck). &quot;</span> \
+                                       <span class="s2">&quot;If you just modified your system configuration you should be fine &quot;</span> \
+                                       <span class="s2">&quot;regarding the “syscheck” messages. &quot;</span> \
+                                       <span class="s2">&quot;They may indicate a successful attack. Also included IDS events that &quot;</span> \
+                                       <span class="s2">&quot;will be ignored (high number of repetitions).&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;High importancy event - They include error or warning messages from the &quot;</span> \
+                                       <span class="s2">&quot;system, kernel, etc. They may indicate an attack against a &quot;</span> \
+                                       <span class="s2">&quot;specific application.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Unusual error (high importance) - Most of the times it matches a &quot;</span> \
+                                       <span class="s2">&quot;common attack pattern.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;High importance security event. Most of the times done with correlation and &quot;</span> \
+                                       <span class="s2">&quot;it indicates an attack.&quot;</span>
+    <span class="n">OSSEC_ALERT_RULE_ID_TO_DESCR</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Severe attack - No chances of false positives. Immediate attention &quot;</span> \
+                                       <span class="s2">&quot;is necessary.&quot;</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;invalid_login&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;authentication_success&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;authentication_failed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;connection_attempt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;attacks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;adduser&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;sshd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;ids&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;firewall&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;squid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;apache&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">OSSEC_IDS_ALERT_GROUP_ID</span><span class="p">[</span><span class="s2">&quot;syslog&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="n">OSSEC_SEVERE_ALERT_LEVEL_THRESHOLD</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">STOP_OSSEC_IDS</span> <span class="o">=</span> <span class="s2">&quot;/var/ossec/bin/ossec-control stop&quot;</span>
+    <span class="n">START_OSSEC_IDS</span> <span class="o">=</span> <span class="s2">&quot;/var/ossec/bin/ossec-control start&quot;</span>
+    <span class="n">CHECK_IF_OSSEC_IS_RUNNING_CMD</span> <span class="o">=</span> <span class="s2">&quot;service ossec status&quot;</span>
+    <span class="n">OSSEC_RUNNING_SEARCH</span> <span class="o">=</span> <span class="s2">&quot;ossec-execd is running&quot;</span></div>
+
+
+<div class="viewcode-block" id="SNORT_IDS_ROUTER"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.SNORT_IDS_ROUTER">[docs]</a><span class="k">class</span> <span class="nc">SNORT_IDS_ROUTER</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the Snort IDS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">MAX_ALERTS</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">UPDATE_RULESET</span> <span class="o">=</span> <span class="s2">&quot;/pulledpork/pulledpork.pl -c /pulledpork/etc/pulledpork.conf -l -P -E -H SIGHUP&quot;</span>
+    <span class="n">SNORT_FAST_LOG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/var/snort/fast.log&quot;</span>
+    <span class="n">SNORT_ALERTS_FILE</span> <span class="o">=</span> <span class="s2">&quot;/var/snort/alert.csv&quot;</span>
+    <span class="n">SNORT_STATS_FILE</span> <span class="o">=</span> <span class="s2">&quot;/var/snort/snort.stats&quot;</span>
+    <span class="n">TAIL_ALERTS_COMMAND</span> <span class="o">=</span> <span class="s2">&quot;sudo tail -&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">MAX_ALERTS</span><span class="p">)</span>
+    <span class="n">TAIL_FAST_LOG_COMMAND</span> <span class="o">=</span> <span class="s2">&quot;sudo tail -&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">MAX_ALERTS</span><span class="p">))</span>
+    <span class="n">TAIL_ALERTS_LATEST_COMMAND</span> <span class="o">=</span> <span class="s2">&quot;sudo tail -1&quot;</span>
+    <span class="n">PRIORITY_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Priority: \d&quot;</span><span class="p">)</span>
+    <span class="n">IPS_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{1,3}.\d{1,3}\.\d{1,3}\.\d{1,3} -&gt; \d{1,3}.\d{1,3}\.\d{1,3}\.\d{1,3}&quot;</span><span class="p">)</span>
+    <span class="n">RULE_ID_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[\d{1,3}\:\d{1,3}&quot;</span><span class="p">)</span>
+    <span class="n">CLASSIFICATION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;=Classification: )(.*?)(?=])&quot;</span><span class="p">)</span>
+    <span class="n">SNORT_SEVERE_ALERT_PRIORITY_THRESHOLD</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;tcp-connection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A TCP connection was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Unknown Traffic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;string-detect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A suspicious string was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;protocol-command-decode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Generic Protocol Command Decode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;not-suspicious&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Not Suspicious Traffic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;network-scan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Detection of a Network Scan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;misc-activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Misc activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;icmp-event&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Generic ICMP event&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;web-application-activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Access to a potentially vulnerable web application&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;unusual-client-port-connection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A client was using an unusual port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;system-call-detect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A system call was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;suspicious-login&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;An attempted login using a suspicious username was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;suspicious-filename-detect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A suspicious filename was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;successful-recon-limited&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Information Leak&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;successful-recon-largescale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Large Scale Information Leak&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;successful-dos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Denial of Service&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;rpc-portmap-decode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Decode of an RPC Query&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;non-standard-protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Detection of a non-standard protocol or event&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;misc-attack&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Misc Attack&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;denial-of-service&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Detection of a Denial of Service Attack&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;default-login-attempt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Attempt to login by a default username and password&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;bad-unknown&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Potentially Bad Traffic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;attempted-recon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Attempted Information Leak&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;attempted-dos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Attempted Denial of Service&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;web-application-attack&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Web Application Attack&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;unsuccessful-user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Unsuccessful User Privilege Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;trojan-activity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">26</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;A Network Trojan was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">26</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;successful-user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Successful User Privilege Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;successful-admin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Successful Administrator Privilege Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;shellcode-detect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">29</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Executable code was detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">29</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;policy-violation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Potential Corporate Privacy Violation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;inappropriate-content&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Inappropriate Content was Detected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">31</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;attempted-user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Attempted User Privilege Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;attempted-admin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span>
+    <span class="n">SNORT_ALERT_IDS_ID</span><span class="p">[</span><span class="s2">&quot;Attempted Administrator Privilege Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span>
+    <span class="n">STOP_SNORT_IDS</span> <span class="o">=</span> <span class="s2">&quot;kill -9 $(pgrep snort)&quot;</span>
+    <span class="n">START_SNORT_IDS</span> <span class="o">=</span> <span class="s2">&quot;sudo snort -D -q -c /etc/snort/snort.conf -i </span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2"> -l &quot;</span> \
+                      <span class="s2">&quot;/var/snort/ -h </span><span class="si">{}</span><span class="s2"> -Q -I --create-pidfile&quot;</span>
+    <span class="n">SNORT_LOG_DIR_PERMISSION_CMD</span> <span class="o">=</span> <span class="s2">&quot;sudo chmod -R 777 /var/snort&quot;</span>
+    <span class="n">CHECK_IF_SNORT_IS_RUNNING_CMD</span> <span class="o">=</span> <span class="s2">&quot;ps -aux | grep snort.conf&quot;</span>
+    <span class="n">PS_AUX_CMD</span> <span class="o">=</span> <span class="s2">&quot;ps -aux&quot;</span>
+    <span class="n">GREP_SNORT_CONF</span> <span class="o">=</span> <span class="s2">&quot;grep snort.conf&quot;</span>
+    <span class="n">SEARCH_SNORT_RUNNING</span> <span class="o">=</span> <span class="s2">&quot;/etc/snort/snort.conf&quot;</span></div>
+
+
+<div class="viewcode-block" id="HOST_METRICS"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.HOST_METRICS">[docs]</a><span class="k">class</span> <span class="nc">HOST_METRICS</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the defender&#39;s sensor commands</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LIST_LOGGED_IN_USERS_CMD</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+    <span class="n">LIST_OPEN_CONNECTIONS_CMD</span> <span class="o">=</span> <span class="s2">&quot;netstat -n&quot;</span>
+    <span class="n">LIST_USER_ACCOUNTS</span> <span class="o">=</span> <span class="s2">&quot;cat /etc/passwd&quot;</span>
+    <span class="n">LIST_FAILED_LOGIN_ATTEMPTS</span> <span class="o">=</span> <span class="s2">&quot;sudo tail -10000 /var/log/auth.log&quot;</span>
+    <span class="n">LIST_SUCCESSFUL_LOGIN_ATTEMPTS</span> <span class="o">=</span> <span class="s2">&quot;last&quot;</span>
+    <span class="n">LIST_NUMBER_OF_PROCESSES</span> <span class="o">=</span> <span class="s2">&quot;ps -e | wc -l&quot;</span></div>
+
+
+<div class="viewcode-block" id="EXTERNAL_NETWORK"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.EXTERNAL_NETWORK">[docs]</a><span class="k">class</span> <span class="nc">EXTERNAL_NETWORK</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the external network</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">NETWORK_ID_THIRD_OCTET</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="ELK_CONFIG"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.ELK_CONFIG">[docs]</a><span class="k">class</span> <span class="nc">ELK_CONFIG</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the ELK container configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">NETWORK_ID_THIRD_OCTET</span> <span class="o">=</span> <span class="mi">253</span>
+    <span class="n">NETWORK_ID_FOURTH_OCTET</span> <span class="o">=</span> <span class="mi">252</span>
+    <span class="n">SUFFIX</span> <span class="o">=</span> <span class="s2">&quot;_1&quot;</span></div>
+
+
+<div class="viewcode-block" id="KAFKA_CONFIG"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.KAFKA_CONFIG">[docs]</a><span class="k">class</span> <span class="nc">KAFKA_CONFIG</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to the kafka container configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">DEFAULT_NUM_PARTITIONS</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DEFAULT_NUM_REPLICAS</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">DEFAULT_RETENTION_TIME_HOURS</span> <span class="o">=</span> <span class="mi">240</span>
+    <span class="n">NETWORK_ID_THIRD_OCTET</span> <span class="o">=</span> <span class="mi">253</span>
+    <span class="n">NETWORK_ID_FOURTH_OCTET</span> <span class="o">=</span> <span class="mi">253</span>
+    <span class="n">SUFFIX</span> <span class="o">=</span> <span class="s2">&quot;_1&quot;</span>
+    <span class="n">CLIENT_POPULATION_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;client_population&quot;</span>
+    <span class="n">SNORT_IDS_LOG_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;snort_ids_log&quot;</span>
+    <span class="n">SNORT_IDS_RULE_LOG_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;snort_ids_rule_log&quot;</span>
+    <span class="n">SNORT_IDS_IP_LOG_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;snort_ids_ip_log&quot;</span>
+    <span class="n">OSSEC_IDS_LOG_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;ossec_ids_log&quot;</span>
+    <span class="n">HOST_METRICS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;host_metrics&quot;</span>
+    <span class="n">DOCKER_STATS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;docker_stats&quot;</span>
+    <span class="n">DOCKER_HOST_STATS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;docker_host_stats&quot;</span>
+    <span class="n">OPENFLOW_FLOW_STATS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;openflow_flow_stats&quot;</span>
+    <span class="n">OPENFLOW_PORT_STATS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;openflow_port_stats&quot;</span>
+    <span class="n">OPENFLOW_AGG_FLOW_STATS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;openflow_flow_agg_stats&quot;</span>
+    <span class="n">AVERAGE_OPENFLOW_FLOW_STATS_PER_SWITCH_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;avg_openflow_flow_stats_per_switch&quot;</span>
+    <span class="n">AVERAGE_OPENFLOW_PORT_STATS_PER_SWITCH_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;avg_openflow_port_stats_per_switch&quot;</span>
+    <span class="n">ATTACKER_ACTIONS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;attacker_actions&quot;</span>
+    <span class="n">DEFENDER_ACTIONS_TOPIC_NAME</span> <span class="o">=</span> <span class="s2">&quot;defender_actions&quot;</span>
+    <span class="n">CLIENT_POPULATION_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;num_clients&quot;</span><span class="p">,</span> <span class="s2">&quot;rate&quot;</span><span class="p">]</span>
+    <span class="n">SNORT_IDS_LOG_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-admin&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-user&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;inappropriate-content&quot;</span><span class="p">,</span> <span class="s2">&quot;policy-violation&quot;</span><span class="p">,</span> <span class="s2">&quot;shellcode-detect&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;successful-admin&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-user&quot;</span><span class="p">,</span> <span class="s2">&quot;trojan-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;unsuccessful-user&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;web-application-attack&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-dos&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-recon&quot;</span><span class="p">,</span> <span class="s2">&quot;bad-unknown&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;default-login-attempt&quot;</span><span class="p">,</span> <span class="s2">&quot;denial-of-service&quot;</span><span class="p">,</span> <span class="s2">&quot;misc-attack&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;non-standard-protocol&quot;</span><span class="p">,</span> <span class="s2">&quot;rpc-portmap-decode&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-dos&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;successful-recon-largescale&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-recon-limited&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;suspicious-filename-detect&quot;</span><span class="p">,</span> <span class="s2">&quot;suspicious-login&quot;</span><span class="p">,</span> <span class="s2">&quot;system-call-detect&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;unusual-client-port-connection&quot;</span><span class="p">,</span> <span class="s2">&quot;web-application-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;icmp-event&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;misc-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;network-scan&quot;</span><span class="p">,</span> <span class="s2">&quot;not-suspicious&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol-command-decode&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;string-detect&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp-connection&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_1&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_2&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;priority_3&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_4&quot;</span><span class="p">,</span> <span class="s2">&quot;alerts_weighted_by_priority&quot;</span><span class="p">,</span> <span class="s2">&quot;total_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">]</span>
+    <span class="n">OSSEC_IDS_LOG_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;total_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;alerts_weighted_by_level&quot;</span><span class="p">,</span> <span class="s2">&quot;level_0_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_1_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;level_2_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_3_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_4_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_5_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;level_6_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_7_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_8_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_9_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;level_10_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_11_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_12_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_13_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;level_14_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_15_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;invalid_login_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;authentication_success_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;authentication_failed_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;connection_attempt_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;attacks_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;adduser_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;sshd_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;ids_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;firewall_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;squid_alerts&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;apache_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;syslog_alerts&quot;</span><span class="p">]</span>
+    <span class="n">SNORT_IDS_RULE_LOG_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;alert_rule_id&quot;</span><span class="p">,</span> <span class="s2">&quot;num_alerts&quot;</span><span class="p">]</span>
+    <span class="n">SNORT_IDS_IP_LOG_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;alert_ip&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-admin&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-user&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;inappropriate-content&quot;</span><span class="p">,</span> <span class="s2">&quot;policy-violation&quot;</span><span class="p">,</span> <span class="s2">&quot;shellcode-detect&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;successful-admin&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-user&quot;</span><span class="p">,</span> <span class="s2">&quot;trojan-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;unsuccessful-user&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;web-application-attack&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-dos&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-recon&quot;</span><span class="p">,</span> <span class="s2">&quot;bad-unknown&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;default-login-attempt&quot;</span><span class="p">,</span> <span class="s2">&quot;denial-of-service&quot;</span><span class="p">,</span> <span class="s2">&quot;misc-attack&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;non-standard-protocol&quot;</span><span class="p">,</span> <span class="s2">&quot;rpc-portmap-decode&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-dos&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;successful-recon-largescale&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-recon-limited&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;suspicious-filename-detect&quot;</span><span class="p">,</span> <span class="s2">&quot;suspicious-login&quot;</span><span class="p">,</span> <span class="s2">&quot;system-call-detect&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;unusual-client-port-connection&quot;</span><span class="p">,</span> <span class="s2">&quot;web-application-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;icmp-event&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;misc-activity&quot;</span><span class="p">,</span> <span class="s2">&quot;network-scan&quot;</span><span class="p">,</span> <span class="s2">&quot;not-suspicious&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol-command-decode&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;string-detect&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp-connection&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_1&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_2&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;priority_3&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_4&quot;</span><span class="p">,</span> <span class="s2">&quot;alerts_weighted_by_priority&quot;</span><span class="p">,</span> <span class="s2">&quot;total_alerts&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">]</span>
+    <span class="n">HOST_METRICS_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;num_logged_in_users&quot;</span><span class="p">,</span> <span class="s2">&quot;num_failed_login_attempts&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;num_open_connections&quot;</span><span class="p">,</span> <span class="s2">&quot;num_login_events&quot;</span><span class="p">,</span> <span class="s2">&quot;num_processes&quot;</span><span class="p">,</span> <span class="s2">&quot;num_users&quot;</span><span class="p">]</span>
+    <span class="n">DOCKER_STATS_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;cpu_percent&quot;</span><span class="p">,</span> <span class="s2">&quot;mem_current&quot;</span><span class="p">,</span> <span class="s2">&quot;mem_total&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;mem_percent&quot;</span><span class="p">,</span> <span class="s2">&quot;blk_read&quot;</span><span class="p">,</span> <span class="s2">&quot;blk_write&quot;</span><span class="p">,</span> <span class="s2">&quot;net_rc&quot;</span><span class="p">,</span> <span class="s2">&quot;net_tx&quot;</span><span class="p">,</span> <span class="s2">&quot;pids&quot;</span><span class="p">]</span>
+    <span class="n">ATTACKER_ACTIONS_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;cmd&quot;</span><span class="p">]</span>
+    <span class="n">DEFENDER_ACTIONS_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;cmd&quot;</span><span class="p">]</span>
+    <span class="n">OPENFLOW_FLOW_STATS_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;datapath_id&quot;</span><span class="p">,</span> <span class="s2">&quot;in_port&quot;</span><span class="p">,</span> <span class="s2">&quot;out_port&quot;</span><span class="p">,</span> <span class="s2">&quot;dst_mac_address&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;num_packets&quot;</span><span class="p">,</span> <span class="s2">&quot;num_bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;duration_nanoseconds&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;duration_seconds&quot;</span><span class="p">,</span> <span class="s2">&quot;hard_timeout&quot;</span><span class="p">,</span> <span class="s2">&quot;idle_timeout&quot;</span><span class="p">,</span> <span class="s2">&quot;priority&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;cookie&quot;</span><span class="p">]</span>
+    <span class="n">OPENFLOW_PORT_STATS_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;datapath_id&quot;</span><span class="p">,</span> <span class="s2">&quot;port&quot;</span><span class="p">,</span> <span class="s2">&quot;num_received_packets&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;num_received_bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;num_received_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;num_transmitted_packets&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;num_transmitted_bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;num_transmitted_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;num_received_dropped&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;num_transmitted_dropped&quot;</span><span class="p">,</span> <span class="s2">&quot;num_received_frame_errors&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;num_received_overrun_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;num_received_crc_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;num_collisions&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;duration_nanoseconds&quot;</span><span class="p">,</span> <span class="s2">&quot;duration_seconds&quot;</span><span class="p">]</span>
+    <span class="n">OPENFLOW_AGG_FLOW_STATS_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;datapath_id&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_packets&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_bytes&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;total_num_flows&quot;</span><span class="p">]</span>
+    <span class="n">AVERAGE_OPENFLOW_FLOW_STATS_PER_SWITCH_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;datapath_id&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_packets&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_bytes&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_duration_nanoseconds&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;avg_duration_seconds&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_hard_timeout&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_idle_timeout&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_priority&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_cookie&quot;</span><span class="p">]</span>
+    <span class="n">AVERAGE_OPENFLOW_PORT_STATS_PER_SWITCH_TOPIC_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;datapath_id&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_received_packets&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_received_bytes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_num_received_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_transmitted_packets&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_transmitted_bytes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_num_transmitted_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_received_dropped&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_transmitted_dropped&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_num_received_frame_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_received_overrun_errors&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_num_received_crc_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;total_num_collisions&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_duration_nanoseconds&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_duration_seconds&quot;</span><span class="p">]</span>
+
+    <span class="n">SNORT_IDS_ALERTS_LABELS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;total_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;alerts_weighted_by_priority&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;priority_1_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_2_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;priority_3_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;priority_4_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-admin_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attempted-user_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;inappropriate-content_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;policy-violation_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;shellcode-detect_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-admin_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;successful-user_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;trojan-activity_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;unsuccessful-user_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;web-application-attack_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attempted-dos_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;attempted-recon_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;bad-unknown_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default-login-attempt_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;denial-of-service_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;misc-attack_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;non-standard-protocol_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rpc-portmap-decode_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;successful-dos_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-recon-largescale_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;successful-recon-limited_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;suspicious-filename-detect_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;suspicious-login_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;system-call-detect_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unusual-client-port-connection_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;web-application-activity_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;icmp-event_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;misc-activity_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;network-scan_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;not-suspicious_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol-command-decode_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;string-detect_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp-connection_alerts&quot;</span>
+    <span class="p">]</span>
+    <span class="n">OSSEC_IDS_ALERTS_LABELS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;total_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;alerts_weighted_by_level&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level_0_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_1_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level_2_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_3_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_4_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_5_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_6_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_7_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level_8_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_9_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_10_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_11_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_12_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level_13_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_14_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;level_15_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;invalid_login_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;authentication_success_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;authentication_failed_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;connection_attempt_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;attacks_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;adduser_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;sshd_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;ids_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;firewall_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;squid_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;apache_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;syslog_alerts&quot;</span>
+    <span class="p">]</span>
+    <span class="n">HOST_METRICS_LABELS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;num_logged_in_users&quot;</span><span class="p">,</span> <span class="s2">&quot;severe_alerts&quot;</span><span class="p">,</span> <span class="s2">&quot;warning_alerts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;num_failed_login_attempts&quot;</span><span class="p">,</span> <span class="s2">&quot;num_open_connections&quot;</span><span class="p">,</span> <span class="s2">&quot;num_login_events&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;num_processes&quot;</span><span class="p">,</span> <span class="s2">&quot;num_users&quot;</span>
+    <span class="p">]</span>
+    <span class="n">DOCKER_STATS_COUNTER_LABELS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;pids&quot;</span><span class="p">,</span> <span class="s2">&quot;cpu_percent&quot;</span><span class="p">,</span> <span class="s2">&quot;mem_current&quot;</span><span class="p">,</span> <span class="s2">&quot;mem_total&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mem_percent&quot;</span><span class="p">,</span> <span class="s2">&quot;blk_read&quot;</span><span class="p">,</span> <span class="s2">&quot;blk_write&quot;</span><span class="p">,</span> <span class="s2">&quot;net_rx&quot;</span><span class="p">,</span> <span class="s2">&quot;net_tx&quot;</span>
+    <span class="p">]</span>
+    <span class="n">DOCKER_STATS_PERCENT_LABELS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;cpu_percent&quot;</span><span class="p">,</span> <span class="s2">&quot;cpu_percent&quot;</span>
+    <span class="p">]</span>
+    <span class="n">CLIENT_POPULATION_METRIC_LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;num_clients&quot;</span><span class="p">,</span> <span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="s2">&quot;service_time&quot;</span><span class="p">]</span>
+    <span class="n">ALL_DELTA_AGG_LABELS</span> <span class="o">=</span> <span class="p">(</span><span class="n">SNORT_IDS_ALERTS_LABELS</span> <span class="o">+</span> <span class="n">HOST_METRICS_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_COUNTER_LABELS</span> <span class="o">+</span>
+                            <span class="n">DOCKER_STATS_PERCENT_LABELS</span> <span class="o">+</span> <span class="n">CLIENT_POPULATION_METRIC_LABELS</span> <span class="o">+</span> <span class="n">OSSEC_IDS_ALERTS_LABELS</span><span class="p">)</span>
+    <span class="n">ALL_DELTA_MACHINE_LABELS</span> <span class="o">=</span> <span class="p">(</span><span class="n">SNORT_IDS_ALERTS_LABELS</span> <span class="o">+</span> <span class="n">HOST_METRICS_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_COUNTER_LABELS</span> <span class="o">+</span>
+                                <span class="n">DOCKER_STATS_PERCENT_LABELS</span> <span class="o">+</span> <span class="n">OSSEC_IDS_ALERTS_LABELS</span><span class="p">)</span>
+    <span class="n">ALL_INITIAL_AGG_LABELS</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST_METRICS_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_COUNTER_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_PERCENT_LABELS</span> <span class="o">+</span>
+                              <span class="n">CLIENT_POPULATION_METRIC_LABELS</span> <span class="o">+</span> <span class="n">SNORT_IDS_ALERTS_LABELS</span> <span class="o">+</span> <span class="n">OSSEC_IDS_ALERTS_LABELS</span><span class="p">)</span>
+    <span class="n">ALL_INITIAL_MACHINE_LABELS</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST_METRICS_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_COUNTER_LABELS</span> <span class="o">+</span> <span class="n">DOCKER_STATS_PERCENT_LABELS</span> <span class="o">+</span>
+                                  <span class="n">SNORT_IDS_ALERTS_LABELS</span> <span class="o">+</span> <span class="n">OSSEC_IDS_ALERTS_LABELS</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KAFKA"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.KAFKA">[docs]</a><span class="k">class</span> <span class="nc">KAFKA</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    String constants for managing Kafka</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KAFKA_STATUS</span> <span class="o">=</span> <span class="s2">&quot;service kafka status&quot;</span>
+    <span class="n">KAFKA_STOP</span> <span class="o">=</span> <span class="s2">&quot;service kafka stop&quot;</span>
+    <span class="n">KAFKA_START</span> <span class="o">=</span> <span class="s2">&quot;service kafka start&quot;</span>
+    <span class="n">RETENTION_MS_CONFIG_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;retention.ms&quot;</span>
+    <span class="n">BOOTSTRAP_SERVERS_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;bootstrap.servers&quot;</span>
+    <span class="n">CLIENT_ID_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;client.id&quot;</span>
+    <span class="n">GROUP_ID_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;group.id&quot;</span>
+    <span class="n">AUTO_OFFSET_RESET_PROPERTY</span> <span class="o">=</span> <span class="s2">&quot;auto.offset.reset&quot;</span>
+    <span class="n">EARLIEST_OFFSET</span> <span class="o">=</span> <span class="s2">&quot;earliest&quot;</span>
+    <span class="n">PORT</span> <span class="o">=</span> <span class="mi">9092</span>
+    <span class="n">EXTERNAL_PORT</span> <span class="o">=</span> <span class="mi">9292</span>
+    <span class="n">INTERNAL_IP_PLACEHOLDER</span> <span class="o">=</span> <span class="s2">&quot;INTERNAL_IP&quot;</span>
+    <span class="n">EXTERNAL_IP_PLACEHOLDER</span> <span class="o">=</span> <span class="s2">&quot;EXTERNAL_IP&quot;</span>
+    <span class="n">DIR</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/kafka/logs/&quot;</span>
+    <span class="n">KAFKA_CONFIG_FILE</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/kafka/config/server.properties&quot;</span></div>
+
+
+<div class="viewcode-block" id="ELK"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.ELK">[docs]</a><span class="k">class</span> <span class="nc">ELK</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    String constants for managing the ELK stack</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ELK_START</span> <span class="o">=</span> <span class="s2">&quot;nohup /usr/local/bin/start.sh &gt; /elk_server.log &amp;&quot;</span>
+    <span class="n">ELK_LOG</span> <span class="o">=</span> <span class="s2">&quot;/elk_server.log&quot;</span>
+    <span class="n">ELASTICSEARCH_STOP</span> <span class="o">=</span> <span class="s2">&quot;service elasticsearch stop&quot;</span>
+    <span class="n">KIBANA_STOP</span> <span class="o">=</span> <span class="s2">&quot;service kibana stop&quot;</span>
+    <span class="n">LOGSTASH_STOP</span> <span class="o">=</span> <span class="s2">&quot;service logstash stop&quot;</span>
+    <span class="n">ELASTICSEARCH_START</span> <span class="o">=</span> <span class="s2">&quot;service elasticsearch start&quot;</span>
+    <span class="n">KIBANA_START</span> <span class="o">=</span> <span class="s2">&quot;service kibana start&quot;</span>
+    <span class="n">LOGSTASH_START</span> <span class="o">=</span> <span class="s2">&quot;service logstash start&quot;</span>
+    <span class="n">ELASTICSEARCH_STATUS</span> <span class="o">=</span> <span class="s2">&quot;service elasticsearch status&quot;</span>
+    <span class="n">KIBANA_STATUS</span> <span class="o">=</span> <span class="s2">&quot;service kibana status&quot;</span>
+    <span class="n">LOGSTASH_STATUS</span> <span class="o">=</span> <span class="s2">&quot;service logstash status&quot;</span>
+    <span class="n">ELASTICSEARCH_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/var/log/elasticsearch/&quot;</span>
+    <span class="n">LOGSTASH_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/var/log/logstash/&quot;</span>
+    <span class="n">KIBANA_LOG_DIR</span> <span class="o">=</span> <span class="s2">&quot;/var/log/kibana/&quot;</span>
+    <span class="n">ELASTIC_PORT</span> <span class="o">=</span> <span class="mi">9200</span>
+    <span class="n">KIBANA_PORT</span> <span class="o">=</span> <span class="mi">5601</span>
+    <span class="n">LOGSTASH_PORT</span> <span class="o">=</span> <span class="mi">5044</span></div>
+
+
+<div class="viewcode-block" id="RYU"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.RYU">[docs]</a><span class="k">class</span> <span class="nc">RYU</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    String constants for managing Ryu</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CHECK_IF_RYU_CONTROLLER_IS_RUNNING</span> <span class="o">=</span> <span class="s2">&quot;ps -aux | grep ryu_controller.py&quot;</span>
+    <span class="n">STOP_RYU_CONTROLLER</span> <span class="o">=</span> <span class="s2">&quot;sudo pkill -f ryu_controller.py&quot;</span>
+    <span class="n">STOP_RYU_CONTROLLER_MANAGER</span> <span class="o">=</span> <span class="s2">&quot;sudo pkill -f ryu-manager&quot;</span>
+    <span class="n">RYU_CONTROLLER_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;ryu_controller.py&quot;</span>
+    <span class="n">SEARCH_CONTROLLER</span> <span class="o">=</span> <span class="s2">&quot;/root/miniconda3/bin/python3 /ryu_controller.py&quot;</span>
+    <span class="n">START_RYU_CONTROLLER</span> <span class="o">=</span> <span class="s2">&quot;sudo nohup /root/miniconda3/bin/python3 /ryu_controller.py --port </span><span class="si">{}</span><span class="s2"> --webport </span><span class="si">{}</span><span class="s2"> &quot;</span> \
+                           <span class="s2">&quot;--controller </span><span class="si">{}</span><span class="s2"> &amp;&quot;</span>
+    <span class="n">START_PRODUCER_HTTP_RESOURCE</span> <span class="o">=</span> <span class="s2">&quot;/cslenorthboundapi/producer/start&quot;</span>
+    <span class="n">STOP_PRODUCER_HTTP_RESOURCE</span> <span class="o">=</span> <span class="s2">&quot;/cslenorthboundapi/producer/stop&quot;</span>
+    <span class="n">STATUS_PRODUCER_HTTP_RESOURCE</span> <span class="o">=</span> <span class="s2">&quot;/cslenorthboundapi/producer/status&quot;</span>
+    <span class="n">TIME_STEP_LEN_SECONDS</span> <span class="o">=</span> <span class="s2">&quot;time_step_len_seconds&quot;</span>
+    <span class="n">PRODUCER_RUNNING</span> <span class="o">=</span> <span class="s2">&quot;producer_running&quot;</span>
+    <span class="n">KAFKA_CONF</span> <span class="o">=</span> <span class="s2">&quot;kafka_conf&quot;</span>
+    <span class="n">REQUEST_TIMEOUT_S</span> <span class="o">=</span> <span class="mi">5</span></div>
+
+
+<div class="viewcode-block" id="INTERFACES"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.INTERFACES">[docs]</a><span class="k">class</span> <span class="nc">INTERFACES</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    String constrants related to networking interfaces</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ETH1</span> <span class="o">=</span> <span class="s2">&quot;eth1&quot;</span>
+    <span class="n">ETH0</span> <span class="o">=</span> <span class="s2">&quot;eth0&quot;</span>
+    <span class="n">ADDR</span> <span class="o">=</span> <span class="s2">&quot;addr&quot;</span></div>
+
+
+<div class="viewcode-block" id="SPARK"><a class="viewcode-back" href="../../../csle_collector.constants.html#csle_collector.constants.constants.SPARK">[docs]</a><span class="k">class</span> <span class="nc">SPARK</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constants related to Spark</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">START_SPARK_MASTER</span> <span class="o">=</span> <span class="s2">&quot;/spark-3.3.3-bin-hadoop3/sbin/start-master.sh&quot;</span>
+    <span class="n">START_SPARK_WORKER</span> <span class="o">=</span> <span class="s2">&quot;/spark-3.3.3-bin-hadoop3/sbin/start-worker.sh spark://15.13.1.161:7077 -m 2G -c 1&quot;</span>
+    <span class="n">SPARK_MASTER_PID_FILE</span> <span class="o">=</span> <span class="s2">&quot;/tmp/spark--org.apache.spark.deploy.master.Master-1.pid&quot;</span>
+    <span class="n">SPARK_WORKER_PID_FILE</span> <span class="o">=</span> <span class="s2">&quot;/tmp/spark--org.apache.spark.deploy.worker.Worker-1.pid&quot;</span>
+    <span class="n">STOP_SPARK_WORKER</span> <span class="o">=</span> <span class="s2">&quot;sudo kill -9 </span><span class="si">{}</span><span class="s2">&quot;</span>
+    <span class="n">STOP_SPARK_MASTER</span> <span class="o">=</span> <span class="s2">&quot;sudo kill -9 </span><span class="si">{}</span><span class="s2">&quot;</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2024, Kim Hammar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

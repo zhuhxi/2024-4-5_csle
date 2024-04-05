@@ -1,0 +1,8 @@
+*.pomdp
+*.alpha
+*.pg
+*##
+*.csv
+*.log
+*.png
+*.pdf

@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+// Interface exported by the server
+service HostManager {
+  rpc stopHostMonitor(StopHostMonitorMsg) returns (HostStatusDTO) {}
+  rpc startHostMonitor(StartHostMonitorMsg) returns (HostStatusDTO) {}
+  rpc getHostStatus(GetHostStatusMsg) returns (HostStatusDTO) {}
+  rpc getHostMetrics(GetHostMetricsMsg) returns (HostMetricsDTO) {}
+  rpc stopFilebeat(StopFilebeatMsg) returns (HostStatusDTO) {}
+  rpc startFilebeat(StartFilebeatMsg) returns (HostStatusDTO) {}
+  rpc configFilebeat(ConfigFilebeatMsg) returns (HostStatusDTO) {}
+  rpc stopPacketbeat(StopPacketbeatMsg) returns (HostStatusDTO) {}
+  rpc startPacketbeat(StartPacketbeatMsg) returns (HostStatusDTO) {}
+  rpc configPacketbeat(ConfigPacketbeatMsg) returns (HostStatusDTO) {}
+  rpc stopMetricbeat(StopMetricbeatMsg) returns (HostStatusDTO) {}
+  rpc startMetricbeat(StartMetricbeatMsg) returns (HostStatusDTO) {}
+  rpc configMetricbeat(ConfigMetricbeatMsg) returns (HostStatusDTO) {}
+  rpc stopHeartbeat(StopHeartbeatMsg) returns (HostStatusDTO) {}
+  rpc startHeartbeat(StartHeartbeatMsg) returns (HostStatusDTO) {}
+  rpc configHeartbeat(ConfigHeartbeatMsg) returns (HostStatusDTO) {}
+  rpc stopSpark(StopSparkMsg) returns (HostStatusDTO) {}
+  rpc startSpark(StartSparkMsg) returns (HostStatusDTO) {}
+}
+
+// Message that the client sends to stop spark
+message StopSparkMsg {}
+
+// Message that the client sends to start spark
+message StartSparkMsg {}
+
+// Message that the client sends to stop the HostMonitor
+message StopHostMonitorMsg {}
+
+// Message that the client sends to start the HostMonitor
+message StartHostMonitorMsg {
+  string kafka_ip = 1;
+  int32 kafka_port = 2;
+  int32 time_step_len_seconds = 4;
+}
+
+// Message that the client sends to stop filebeat
+message StopFilebeatMsg {}
+
+// Message that the client sends to start filebeat
+message StartFilebeatMsg {}
+
+// Message that the client sends to set the filebeat configuration
+message ConfigFilebeatMsg {
+  string kibana_ip = 1;
+  int32 kibana_port = 2;
+  string elastic_ip = 3;
+  int32 elastic_port = 4;
+  int32 num_elastic_shards = 5;
+  bool reload_enabled = 6;
+  string kafka_ip = 7;
+  int32 kafka_port = 8;
+  bool kafka = 9;
+  repeated string kafka_topics = 10;
+  repeated string filebeat_modules = 11;
+  repeated string log_files_paths = 12;
+}
+
+// Message that the client sends to stop packetbeat
+message StopPacketbeatMsg {}
+
+// Message that the client sends to start packetbeat
+message StartPacketbeatMsg {}
+
+// Message that the client sends to set the packetbeat configuration
+message ConfigPacketbeatMsg {
+  string kibana_ip = 1;
+  int32 kibana_port = 2;
+  string elastic_ip = 3;
+  int32 elastic_port = 4;
+  int32 num_elastic_shards = 5;
+}
+
+// Message that the client sends to stop metricbeat
+message StopMetricbeatMsg {}
+
+// Message that the client sends to start metricbeat
+message StartMetricbeatMsg {}
+
+// Message that the client sends to set the metricbeat configuration
+message ConfigMetricbeatMsg {
+  string kibana_ip = 1;
+  int32 kibana_port = 2;
+  string elastic_ip = 3;
+  int32 elastic_port = 4;
+  int32 num_elastic_shards = 5;
+  string kafka_ip = 6;
+  int32 kafka_port = 7;
+  bool reload_enabled = 8;
+  repeated string metricbeat_modules = 12;
+}
+
+// Message that the client sends to get the status of the HostMonitor
+message GetHostStatusMsg {}
+
+//Message that the server returns when asked about the status of running processes
+message HostStatusDTO {
+  bool monitor_running = 1;
+  bool filebeat_running = 2;
+  bool packetbeat_running = 3;
+  bool metricbeat_running = 4;
+  bool heartbeat_running = 5;
+}
+
+// Message that the client sends to extract the Host metrics from given timestamps
+message GetHostMetricsMsg {
+  float failed_auth_last_ts = 1;
+  float login_last_ts = 2;
+}
+
+//Message that the server returns when asked about the latest host metrics
+message HostMetricsDTO {
+  int32 num_logged_in_users = 1;
+  int32 num_failed_login_attempts = 2;
+  int32 num_open_connections = 3;
+  int32 num_login_events = 4;
+  int32 num_processes = 5;
+  int32 num_users = 6;
+  string ip = 7;
+  float timestamp = 8;
+}
+
+// Message that the client sends to stop heartbeat
+message StopHeartbeatMsg {}
+
+// Message that the client sends to start heartbeat
+message StartHeartbeatMsg {}
+
+// Message that the client sends to set the heartbeat configuration
+message ConfigHeartbeatMsg {
+  string kibana_ip = 1;
+  int32 kibana_port = 2;
+  string elastic_ip = 3;
+  int32 elastic_port = 4;
+  int32 num_elastic_shards = 5;;
+  repeated string hosts_to_monitor = 6;
+}

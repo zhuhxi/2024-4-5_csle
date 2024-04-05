@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>csle_common.dao.training package &mdash; csle-common 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="csle_common.logging package" href="csle_common.logging.html" />
+    <link rel="prev" title="csle_common.dao.system_identification package" href="csle_common.dao.system_identification.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> csle-common
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="csle_common.constants.html">csle_common.constants package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.consumer_threads.html">csle_common.consumer_threads package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.controllers.html">csle_common.controllers package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="csle_common.dao.html">csle_common.dao package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="csle_common.dao.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.datasets.html">csle_common.dao.datasets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.docker.html">csle_common.dao.docker package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.domain_randomization.html">csle_common.dao.domain_randomization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.emulation_action.html">csle_common.dao.emulation_action package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.emulation_action_result.html">csle_common.dao.emulation_action_result package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.emulation_config.html">csle_common.dao.emulation_config package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.emulation_observation.html">csle_common.dao.emulation_observation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.encoding.html">csle_common.dao.encoding package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.jobs.html">csle_common.dao.jobs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.management.html">csle_common.dao.management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.simulation_config.html">csle_common.dao.simulation_config package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csle_common.dao.system_identification.html">csle_common.dao.system_identification package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">csle_common.dao.training package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-agent-type-module">csle_common.dao.training.agent_type module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-alpha-vectors-policy-module">csle_common.dao.training.alpha_vectors_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-dqn-policy-module">csle_common.dao.training.dqn_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-experiment-config-module">csle_common.dao.training.experiment_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-experiment-execution-module">csle_common.dao.training.experiment_execution module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-experiment-result-module">csle_common.dao.training.experiment_result module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-fnn-with-softmax-policy-module">csle_common.dao.training.fnn_with_softmax_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-hparam-module">csle_common.dao.training.hparam module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-mixed-multi-threshold-stopping-policy-module">csle_common.dao.training.mixed_multi_threshold_stopping_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-multi-threshold-stopping-policy-module">csle_common.dao.training.multi_threshold_stopping_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-player-type-module">csle_common.dao.training.player_type module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-policy-module">csle_common.dao.training.policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-ppo-policy-module">csle_common.dao.training.ppo_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-random-policy-module">csle_common.dao.training.random_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-tabular-policy-module">csle_common.dao.training.tabular_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csle-common-dao-training-vector-policy-module">csle_common.dao.training.vector_policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="csle_common.dao.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.logging.html">csle_common.logging package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.metastore.html">csle_common.metastore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.tunneling.html">csle_common.tunneling package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csle_common.util.html">csle_common.util package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">csle-common</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="csle_common.dao.html">csle_common.dao package</a> &raquo;</li>
+      <li>csle_common.dao.training package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/csle_common.dao.training.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="csle-common-dao-training-package">
+<h1>csle_common.dao.training package<a class="headerlink" href="#csle-common-dao-training-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-agent-type-module">
+<h2>csle_common.dao.training.agent_type module<a class="headerlink" href="#csle-common-dao-training-agent-type-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-alpha-vectors-policy-module">
+<h2>csle_common.dao.training.alpha_vectors_policy module<a class="headerlink" href="#csle-common-dao-training-alpha-vectors-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-dqn-policy-module">
+<h2>csle_common.dao.training.dqn_policy module<a class="headerlink" href="#csle-common-dao-training-dqn-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-experiment-config-module">
+<h2>csle_common.dao.training.experiment_config module<a class="headerlink" href="#csle-common-dao-training-experiment-config-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-experiment-execution-module">
+<h2>csle_common.dao.training.experiment_execution module<a class="headerlink" href="#csle-common-dao-training-experiment-execution-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-experiment-result-module">
+<h2>csle_common.dao.training.experiment_result module<a class="headerlink" href="#csle-common-dao-training-experiment-result-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-fnn-with-softmax-policy-module">
+<h2>csle_common.dao.training.fnn_with_softmax_policy module<a class="headerlink" href="#csle-common-dao-training-fnn-with-softmax-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-hparam-module">
+<h2>csle_common.dao.training.hparam module<a class="headerlink" href="#csle-common-dao-training-hparam-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-mixed-multi-threshold-stopping-policy-module">
+<h2>csle_common.dao.training.mixed_multi_threshold_stopping_policy module<a class="headerlink" href="#csle-common-dao-training-mixed-multi-threshold-stopping-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-multi-threshold-stopping-policy-module">
+<h2>csle_common.dao.training.multi_threshold_stopping_policy module<a class="headerlink" href="#csle-common-dao-training-multi-threshold-stopping-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-player-type-module">
+<h2>csle_common.dao.training.player_type module<a class="headerlink" href="#csle-common-dao-training-player-type-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-policy-module">
+<h2>csle_common.dao.training.policy module<a class="headerlink" href="#csle-common-dao-training-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-ppo-policy-module">
+<h2>csle_common.dao.training.ppo_policy module<a class="headerlink" href="#csle-common-dao-training-ppo-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-random-policy-module">
+<h2>csle_common.dao.training.random_policy module<a class="headerlink" href="#csle-common-dao-training-random-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-tabular-policy-module">
+<h2>csle_common.dao.training.tabular_policy module<a class="headerlink" href="#csle-common-dao-training-tabular-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="csle-common-dao-training-vector-policy-module">
+<h2>csle_common.dao.training.vector_policy module<a class="headerlink" href="#csle-common-dao-training-vector-policy-module" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="csle_common.dao.system_identification.html" class="btn btn-neutral float-left" title="csle_common.dao.system_identification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="csle_common.logging.html" class="btn btn-neutral float-right" title="csle_common.logging package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2024, Kim Hammar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

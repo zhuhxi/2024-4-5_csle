@@ -1,0 +1,53 @@
+.containerRunningStatus{
+    color: green;
+}
+
+.containerStoppedStatus{
+    color: red;
+}
+
+.aggregateActions {
+    font-size: 14px;
+    font-weight: bolder;
+    margin-left:10px;
+}
+
+.aggregateActionsContainer {
+    margin-bottom: 15px;
+}
+
+.logsModalBody {
+    align-content: center;
+    text-align: center;
+}
+
+.logsLabel {
+    margin-right: 20px;
+}
+.snortLogo {
+    margin-left:20px;
+}
+
+.ossecLogo {
+    margin-left:20px;
+}
+
+.dockerLogo {
+    margin-left:20px;
+}
+
+.kafkaLogo {
+    margin-left:20px;
+}
+
+.logstashLogo {
+    margin-left:20px;
+}
+
+.kibanaLogo {
+    margin-left:20px;
+}
+
+.elasticLogo {
+    margin-left:20px;
+}
