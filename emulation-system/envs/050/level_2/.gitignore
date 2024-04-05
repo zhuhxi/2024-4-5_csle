@@ -1,0 +1,5 @@
+*.zip
+*.json
+containers
+
+__pycache__

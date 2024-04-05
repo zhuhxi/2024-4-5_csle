@@ -1,0 +1,69 @@
+.netTopology {
+    margin-top: -35px;
+}
+.infoButton2 {
+    font-size: 14px;
+}
+
+.infoPolicyExp {
+    margin-left: 20px;
+}
+
+.demoCard {
+    margin-top:0px
+}
+.deltaAlertsRow {
+    margin-top: 20px
+}
+
+.pChart {
+    margin-bottom:50px
+}
+
+.traceDropdownDemoLabel {
+    display: inline;
+}
+
+.intrusionStateInfo{
+    margin-top:40px
+}
+
+.defenderPolicyPlotSlider {
+    margin-top:30px;
+}
+
+.defenderPolicyPlotSliderLabel {
+    margin-top:22px;
+    font-size:14px;
+}
+
+.noIntrusion {
+    color: darkgreen;
+}
+
+.intrusion {
+    color: darkred;
+}
+
+.labelTest {
+    font-size: 14px;
+}
+
+.cardTitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.DefenderPolicy {
+    margin-top: 0px;
+}
+
+.policyExamination {
+    outline:none
+}
+
+@media only screen and (max-width: 500px) {
+    .attackersView {
+        margin-top:90px
+    }
+}

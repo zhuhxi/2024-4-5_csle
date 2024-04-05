@@ -1,0 +1,2007 @@
+syntax = "proto3";
+
+// Interface exported by the server
+service ClusterManager {
+  rpc getNodeStatus(GetNodeStatusMsg) returns (NodeStatusDTO) {}
+  rpc startPostgreSQL(StartPostgreSQLMsg) returns (ServiceStatusDTO) {}
+  rpc startCAdvisor(StartCAdvisorMsg) returns (ServiceStatusDTO) {}
+  rpc startNodeExporter(StartNodeExporterMsg) returns (ServiceStatusDTO) {}
+  rpc startGrafana(StartGrafanaMsg) returns (ServiceStatusDTO) {}
+  rpc startPrometheus(StartPrometheusMsg) returns (ServiceStatusDTO) {}
+  rpc startPgAdmin(StartPgAdminMsg) returns (ServiceStatusDTO) {}
+  rpc startNginx(StartNginxMsg) returns (ServiceStatusDTO) {}
+  rpc startFlask(StartFlaskMsg) returns (ServiceStatusDTO) {}
+  rpc startDockerStatsManager(StartDockerStatsManagerMsg) returns (ServiceStatusDTO) {}
+  rpc startDockerStatsManagerThread(StartDockerStatsManagerThreadMsg) returns (ServiceStatusDTO) {}
+  rpc startDockerEngine(StartDockerEngineMsg) returns (ServiceStatusDTO) {}
+  rpc stopPostgreSQL(StopPostgreSQLMsg) returns (ServiceStatusDTO) {}
+  rpc stopCAdvisor(StopCAdvisorMsg) returns (ServiceStatusDTO) {}
+  rpc stopNodeExporter(StopNodeExporterMsg) returns (ServiceStatusDTO) {}
+  rpc stopGrafana(StopGrafanaMsg) returns (ServiceStatusDTO) {}
+  rpc stopPrometheus(StopPrometheusMsg) returns (ServiceStatusDTO) {}
+  rpc stopPgAdmin(StopPgAdminMsg) returns (ServiceStatusDTO) {}
+  rpc stopNginx(StopNginxMsg) returns (ServiceStatusDTO) {}
+  rpc stopFlask(StopFlaskMsg) returns (ServiceStatusDTO) {}
+  rpc stopDockerStatsManager(StopDockerStatsManagerMsg) returns (ServiceStatusDTO) {}
+  rpc stopDockerEngine(StopDockerEngineMsg) returns (ServiceStatusDTO) {}
+  rpc getCsleLogFiles(GetCsleLogFilesMsg) returns (LogsDTO) {}
+  rpc getDockerStatsManagerLogs(GetDockerStatsManagerLogsMsg) returns (LogsDTO) {}
+  rpc getPrometheusLogs(GetPrometheusLogsMsg) returns (LogsDTO) {}
+  rpc getNodeExporterLogs(GetNodeExporterLogsMsg) returns (LogsDTO) {}
+  rpc getCadvisorLogs(GetCAdvisorLogsMsg) returns (LogsDTO) {}
+  rpc getPgAdminLogs(GetPgAdminLogsMsg) returns (LogsDTO) {}
+  rpc getGrafanaLogs(GetGrafanaLogsMsg) returns (LogsDTO) {}
+  rpc getNginxLogs(GetNginxLogsMsg) returns (LogsDTO) {}
+  rpc getDockerLogs(GetDockerLogsMsg) returns (LogsDTO) {}
+  rpc getPostrgreSQLLogs(GetPostgreSQLLogsMsg) returns (LogsDTO) {}
+  rpc getFlaskLogs(GetFlaskLogsMsg) returns (LogsDTO) {}
+  rpc getLogFile(GetLogFileMsg) returns (LogsDTO) {}
+  rpc startContainersInExecution(StartContainersInExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc attachContainersInExecutionToNetworks(AttachContainersToNetworksInExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc installLibraries(InstallLibrariesMsg) returns (OperationOutcomeDTO) {}
+  rpc applyKafkaConfig(ApplyKafkaConfigMsg) returns (OperationOutcomeDTO) {}
+  rpc startSdnController(StartSdnControllerMsg) returns (OperationOutcomeDTO) {}
+  rpc applyResourceConstraints(ApplyResouceConstraintsMsg) returns (OperationOutcomeDTO) {}
+  rpc createOvsSwitches(CreateOvsSwitchesMsg) returns (OperationOutcomeDTO) {}
+  rpc pingExecution(PingExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc configureOvs(ConfigureOvsMsg) returns (OperationOutcomeDTO) {}
+  rpc startSdnControllerMonitor(StartSdnControllerMonitorMsg) returns (OperationOutcomeDTO) {}
+  rpc createUsers(CreateUsersMsg) returns (OperationOutcomeDTO) {}
+  rpc createVulnerabilities(CreateVulnsMsg) returns (OperationOutcomeDTO) {}
+  rpc createFlags(CreateFlagsMsg) returns (OperationOutcomeDTO) {}
+  rpc createTopology(CreateTopologyMsg) returns (OperationOutcomeDTO) {}
+  rpc startTrafficManagers(StartTrafficManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc startTrafficGenerators(StartTrafficGeneratorsMsg) returns (OperationOutcomeDTO) {}
+  rpc startClientPopulation(StartClientPopulationMsg) returns (OperationOutcomeDTO) {}
+  rpc startKafkaClientProducer(StartKafkaClientProducerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopKafkaClientProducer(StopKafkaClientProducerMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdses(StartSnortIdsesMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdsesMonitorThreads(StartSnortIdsesMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc startOssecIdses(StartOSSECIdsesMsg) returns (OperationOutcomeDTO) {}
+  rpc startOssecIdsesMonitorThreads(StartOSSECIdsesMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc startElkStack(StartElkStackMsg) returns (OperationOutcomeDTO) {}
+  rpc startHostManagers(StartHostManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc applyFileBeatsConfig(ApplyFileBeatConfigsMsg) returns (OperationOutcomeDTO) {}
+  rpc applyPacketBeatsConfig(ApplyPacketBeatConfigsMsg) returns (OperationOutcomeDTO) {}
+  rpc applyMetricBeatsConfig(ApplyMetricBeatConfigsMsg) returns (OperationOutcomeDTO) {}
+  rpc applyHeartBeatsConfig(ApplyHeartBeatConfigsMsg) returns (OperationOutcomeDTO) {}
+  rpc startFilebeats(StartFileBeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc startPacketbeats(StartPacketBeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc startMetricbeats(StartMetricBeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc startHeartbeats(StartHeartBeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopAllExecutionsOfEmulation(StopAllExecutionsOfEmulationMsg) returns (OperationOutcomeDTO) {}
+  rpc stopExecution(StopExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc stopAllExecutions(StopAllExecutionsMsg) returns (OperationOutcomeDTO) {}
+  rpc cleanAllExecutions(CleanAllExecutionsMsg) returns (OperationOutcomeDTO) {}
+  rpc cleanAllExecutionsOfEmulation(CleanAllExecutionsOfEmulationMsg) returns (OperationOutcomeDTO) {}
+  rpc cleanExecution(CleanExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc startTrafficManager(StartTrafficManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopTrafficManager(StartTrafficManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopTrafficManagers(StartTrafficManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc startClientManager(StartClientManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopClientPopulation(StopClientPopulationMsg) returns (OperationOutcomeDTO) {}
+  rpc stopClientManager(StopClientManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc getNumActiveClients(GetNumActiveClientsMsg) returns (GetNumClientsDTO) {}
+  rpc startTrafficGenerator(StartTrafficGeneratorMsg) returns (OperationOutcomeDTO) {}
+  rpc stopTrafficGenerators(StopTrafficGeneratorsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopTrafficGenerator(StopTrafficGeneratorMsg) returns (OperationOutcomeDTO) {}
+  rpc getClientManagersInfo(GetClientManagersInfoMsg) returns (ClientManagersInfoDTO) {}
+  rpc getTrafficManagersInfo(GetTrafficManagersInfoMsg) returns (TrafficManagersInfoDTO) {}
+  rpc stopAllRunningContainers(StopAllRunningContainersMsg) returns (OperationOutcomeDTO) {}
+  rpc stopContainer(StopContainerMsg) returns (OperationOutcomeDTO) {}
+  rpc removeAllStoppedContainers(RemoveAllStoppedContainersMsg) returns (OperationOutcomeDTO) {}
+  rpc removeContainer(RemoveContainerMsg) returns (OperationOutcomeDTO) {}
+  rpc removeAllContainerImages(RemoveAllContainerImagesMsg) returns (OperationOutcomeDTO) {}
+  rpc removeContainerImage(RemoveContainerImageMsg) returns (OperationOutcomeDTO) {}
+  rpc listAllContainerImages(ListAllContainerImagesMsg) returns (ContainerImagesDTO) {}
+  rpc listAllDockerNetworks(ListAllDockerNetworksMsg) returns (DockerNetworksDTO) {}
+  rpc startAllStoppedContainers(StartAllStoppedContainersMsg) returns (OperationOutcomeDTO) {}
+  rpc startContainer(StartContainerMsg) returns (OperationOutcomeDTO) {}
+  rpc listAllRunningContainers(ListAllRunningContainersMsg) returns (RunningContainersDTO) {}
+  rpc listAllRunningEmulations(ListAllRunningEmulationsMsg) returns (RunningEmulationsDTO) {}
+  rpc listAllStoppedContainers(ListAllStoppedContainersMsg) returns (StoppedContainersDTO) {}
+  rpc createEmulationNetworks(CreateEmulationNetworksMsg) returns (OperationOutcomeDTO) {}
+  rpc stopDockerStatsManagerThread(StopDockerStatsManagerThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc getDockerStatsManagerStatus(GetDockerStatsManagerStatusMsg) returns (DockerStatsMonitorStatusDTO) {}
+  rpc removeDockerNetworks(RemoveDockerNetworksMsg) returns (OperationOutcomeDTO) {}
+  rpc removeAllDockerNetworks(RemoveAllDockerNetworksMsg) returns (OperationOutcomeDTO) {}
+  rpc getDockerStatsManagersInfo(GetDockerStatsManagersInfoMsg) returns (DockerStatsManagersInfoDTO) {}
+  rpc startElkManager(StartElkManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopElkManager(StopElkManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc getElkStatus(GetElkStackStatusMsg) returns (ElkStatusDTO) {}
+  rpc stopElkStack(StopElkStackMsg) returns (OperationOutcomeDTO) {}
+  rpc startElastic(StartElasticServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc stopElastic(StopElasticServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc startKibana(StartKibanaServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc stopKibana(StopKibanaServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc startLogstash(StartLogstashServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc stopLogstash(StopLogstashServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc getElkManagersInfo(GetElkManagersInfoMsg) returns (ElkManagersInfoDTO) {}
+  rpc startContainersOfExecution(StartContainersOfExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc runContainer(RunContainerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopContainersOfExecution(StopContainersOfExecutionMsg) returns (OperationOutcomeDTO) {}
+  rpc startHostManager(StartHostManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHostManagers(StopHostManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHostManager(StopHostManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopFilebeats(StopFilebeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopPacketbeats(StopPacketbeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopMetricbeats(StopMetricbeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHeartbeats(StopHeartbeatsMsg) returns (OperationOutcomeDTO) {}
+  rpc startHostMonitorThreads(StartHostMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc startHostMonitorThread(StartHostMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc startFilebeat(StartFileBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc startPacketbeat(StartPacketBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc startMetricbeat(StartMetricBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc startHeartbeat(StartHeartBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc stopFilebeat(StopFileBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc stopPacketbeat(StopPacketBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc stopMetricbeat(StopMetricBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHeartbeat(StopHeartBeatMsg) returns (OperationOutcomeDTO) {}
+  rpc applyFileBeatConfig(ApplyFileBeatConfigMsg) returns (OperationOutcomeDTO) {}
+  rpc applyPacketBeatConfig(ApplyPacketBeatConfigMsg) returns (OperationOutcomeDTO) {}
+  rpc applyMetricBeatConfig(ApplyMetricBeatConfigMsg) returns (OperationOutcomeDTO) {}
+  rpc applyHeartBeatConfig(ApplyHeartBeatConfigMsg) returns (OperationOutcomeDTO) {}
+  rpc getHostMonitorThreadsStatuses(GetHostMonitorThreadsStatusesMsg) returns (HostManagerStatusesDTO) {}
+  rpc getHostManagersInfo(GetHostManagersInfoMsg) returns (HostManagersInfoDTO) {}
+  rpc stopKafkaManager(StopKafkaManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc startKafkaManager(StartKafkaManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc createKafkaTopics(CreateKafkaTopicsMsg) returns (OperationOutcomeDTO) {}
+  rpc getKafkaStatus(GetKafkaManagerStatusMsg) returns (KafkaStatusDTO) {}
+  rpc stopKafkaServer(StopKafkaServerMsg) returns (OperationOutcomeDTO) {}
+  rpc startKafkaServer(StopKafkaServerMsg) returns (OperationOutcomeDTO) {}
+  rpc getKafkaManagersInfo(GetKafkaManagersInfoMsg) returns (KafkaManagersInfoDTO) {}
+  rpc stopOSSECIDSes(StopOSSECIDSesMsg) returns (OperationOutcomeDTO) {}
+  rpc startOSSECIDSes(StartOSSECIDSesMsg) returns (OperationOutcomeDTO) {}
+  rpc stopOSSECIDS(StopOSSECIDSMsg) returns (OperationOutcomeDTO) {}
+  rpc startOSSECIDS(StartOSSECIDSMsg) returns (OperationOutcomeDTO) {}
+  rpc startOSSECIDSManagers(StartOSSECIDSManagers) returns (OperationOutcomeDTO) {}
+  rpc stopOSSECIDSManagers(StopOSSECIDSManagers) returns (OperationOutcomeDTO) {}
+  rpc startOSSECIDSManager(StartOSSECIDSManager) returns (OperationOutcomeDTO) {}
+  rpc stopOSSECIDSManager(StopOSSECIDSManager) returns (OperationOutcomeDTO) {}
+  rpc startOSSECIDSMonitorThread(StartOSSECIDSMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc stopOSSECIDSMonitorThread(StopOSSECIDSMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc stopOSSECIDSMonitorThreads(StopOSSECIDSMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc getOSSECIDSMonitorThreadStatuses(GetOSSECIDSMonitorThreadStatusesMsg)
+      returns (OSSECIdsMonitorThreadStatusesDTO) {}
+  rpc getOSSECIdsManagersInfo(GetOSSECIDSManagersInfoMsg) returns (OSSECIdsManagersInfoDTO) {}
+  rpc startRyuManager(StartRyuManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopRyuManager(StopRyuManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc getRyuStatus(GetRyuServiceStatusMsg) returns (RyuManagerStatusDTO) {}
+  rpc startRyu(StartRyuServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc stopRyu(StopRyuServiceMsg) returns (OperationOutcomeDTO) {}
+  rpc getRyuManagersInfo(GetRyuManagersInfoMsg) returns (RyuManagersInfoDTO) {}
+  rpc stopSnortIdses(StopSnortIdsesMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIdsesMonitorThreads(StopSnortIdsesMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIds(StopSnortMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIdsMonitorThread(StopSnortIdsMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIds(StartSnortMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdsMonitorThreads(StartSnortIdsMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdsMonitorThread(StartSnortIdsMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdsManagers(StartSnortIdsManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIdsManagers(StopSnortIdsManagersMsg) returns (OperationOutcomeDTO) {}
+  rpc startSnortIdsManager(StartSnortIdsManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIdsManager(StopSnortIdsManagerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSnortIdsMonitorThreads(StopSnortIdsMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc getSnortIdsMonitorThreadStatuses(GetSnortIdsMonitorThreadStatusesMsg)
+      returns (SnortIdsMonitorThreadStatusesDTO) {}
+  rpc getSnortIdsManagersInfo(GetSnortIdsManagersInfoMsg) returns (SnortIdsManagersInfoDTO) {}
+  rpc getExecutionInfo(GetExecutionInfoMsg) returns (ExecutionInfoDTO) {}
+  rpc listKibanaTunnels(ListKibanaTunnelsMsg) returns (KibanaTunnelsDTO) {}
+  rpc createKibanaTunnel(CreateKibanaTunnelMsg) returns (OperationOutcomeDTO) {}
+  rpc listRyuTunnels(ListRyuTunnelsMsg) returns (RyuTunnelsDTO) {}
+  rpc createRyuTunnel(CreateKibanaTunnelMsg) returns (OperationOutcomeDTO) {}
+  rpc removeKibanaTunnel(RemoveKibanaTunnelMsg) returns (OperationOutcomeDTO) {}
+  rpc removeRyuTunnel(RemoveRyuTunnelMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHostMonitorThreads(StopHostMonitorThreadsMsg) returns (OperationOutcomeDTO) {}
+  rpc stopHostMonitorThread(StopHostMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc startRyuMonitor(StartRyuMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc stopRyuMonitor(StopRyuMonitorThreadMsg) returns (OperationOutcomeDTO) {}
+  rpc getRyuControllerLogs(GetRyuControllerLogsMsg) returns (LogsDTO) {}
+  rpc getRyuManagerLogs(GetRyuManagerLogsMsg) returns (LogsDTO) {}
+  rpc getElkLogs(GetElkLogsMsg) returns (LogsDTO) {}
+  rpc getElkManagerLogs(GetElkManagerLogsMsg) returns (LogsDTO) {}
+  rpc getTrafficManagerLogs(GetTrafficManagerLogsMsg) returns (LogsDTO) {}
+  rpc getHostManagerLogs(GetHostManagerLogsMsg) returns (LogsDTO) {}
+  rpc getOSSECIdsLogs(GetOSSECIdsLogsMsg) returns (LogsDTO) {}
+  rpc getOSSECIdsManagerLogsMsg(GetOSSECIdsManagerLogsMsg) returns (LogsDTO) {}
+  rpc getSnortIdsLogs(GetSnortIdsLogsMsg) returns (LogsDTO) {}
+  rpc getSnortIdsManagerLogsMsg(GetSnortIdsManagerLogsMsg) returns (LogsDTO) {}
+  rpc getKafkaLogs(GetKafkaLogsMsg) returns (LogsDTO) {}
+  rpc getKafkaManagerLogs(GetKafkaManagerLogsMsg) returns (LogsDTO) {}
+  rpc getClientManagerLogsMsg(GetClientManagerLogsMsg) returns (LogsDTO) {}
+  rpc getContainerLogs(GetContainerLogsMsg) returns (LogsDTO) {}
+  rpc getClusterManagerLogs(GetClusterManagerLogsMsg) returns (LogsDTO) {}
+  rpc getExecutionTimeSeriesData(GetExecutionTimeSeriesDataMsg) returns (EmulationMetricsTimeSeriesDTO) {}
+  rpc startSparkServers(StartSparkServersMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSparkServers(StopSparkServersMsg) returns (OperationOutcomeDTO) {}
+  rpc startSparkServer(StartSparkServerMsg) returns (OperationOutcomeDTO) {}
+  rpc stopSparkServer(StopSparkServerMsg) returns (OperationOutcomeDTO) {}
+  rpc checkPid(CheckPidMsg) returns (OperationOutcomeDTO) {}
+  rpc stopPid(StopPidMsg) returns (OperationOutcomeDTO) {}
+}
+
+// Message that the client sends when requesting to start stop a PID
+message StopPidMsg {
+  int32 pid = 1;
+}
+
+// Message that the client sends when requesting to start check the status of a PID
+message CheckPidMsg {
+  int32 pid = 1;
+}
+
+// Message that the client sends when requesting to start a specific Spark server
+message StartSparkServerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop a specific Spark server
+message StopSparkServerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start the spark servers of a given execution
+message StartSparkServersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the spark servers of a given execution
+message StopSparkServersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+
+
+// Message that the client sends to get the flask logs
+message GetExecutionTimeSeriesDataMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  int32 minutes = 3;
+}
+
+// DTO with data of an emulation, extracted from the Kafka container
+message EmulationMetricsTimeSeriesDTO {
+  repeated ClientPopulationMetricsDTO client_metrics = 1;
+  repeated DockerStatsDTO aggregated_docker_stats = 2;
+  repeated DockerStatsDict docker_host_stats = 3;
+  repeated HostMetricsDict host_metrics = 4;
+  repeated HostMetricsDataDTO aggregated_host_metrics = 5;
+  repeated EmulationDefenderActionDTO defender_actions = 6;
+  repeated EmulationAttackerActionDTO attacker_actions = 7;
+  repeated SnortIdsAlertCountersDTO agg_snort_ids_metrics = 8;
+  int32 emulation_id = 9;
+  repeated OSSECIdsAlertCountersDict ossec_host_alert_counters = 10;
+  repeated OSSECIdsAlertCountersDTO aggregated_ossec_host_alert_counters = 11;
+  repeated FlowStatisticDTO openflow_flow_stats = 12;
+  repeated PortStatisticDTO openflow_port_stats = 13;
+  repeated AvgFlowStatisticDTO avg_openflow_flow_stats = 14;
+  repeated AvgPortStatisticDTO avg_openflow_port_stats = 15;
+  repeated FlowStatisticDict openflow_flow_metrics_per_switch = 16;
+  repeated PortStatisticDict openflow_port_metrics_per_switch = 17;
+  repeated AvgFlowStatisticDict openflow_flow_avg_metrics_per_switch = 18;
+  repeated AvgPortStatisticDict openflow_port_avg_metrics_per_switch = 19;
+  repeated AggFlowStatisticDict agg_openflow_flow_metrics_per_switch = 20;
+  repeated AggFlowStatisticDTO agg_openflow_flow_stats = 21;
+  repeated SnortIdsRuleCountersDTO agg_snort_ids_rule_metrics = 22;
+  repeated SnortIdsIpAlertCountersDict snort_ids_ip_metrics = 23;
+  repeated SnortIdsRuleCountersDict snort_rule_metrics_per_ids = 24;
+  repeated SnortIdsAlertCountersDict snort_alert_metrics_per_ids = 25;
+}
+
+// Dict which maps a string key to a AvgPortStatisticDTO
+message AvgPortStatisticDict {
+  string key = 1;
+  repeated AvgPortStatisticDTO dtos = 2;
+}
+
+// Dict which maps a string key to an AggFlowStatisticDTO
+message AggFlowStatisticDict {
+  string key = 1;
+  repeated AggFlowStatisticDTO dtos = 2;
+}
+
+// Dict which maps a string key to an AvgFlowStatisticDTO
+message AvgFlowStatisticDict {
+  string key = 1;
+  repeated AvgFlowStatisticDTO dtos = 2;
+}
+
+// Dict which maps a string key to a PortStatistic
+message PortStatisticDict {
+  string key = 1;
+  repeated PortStatisticDTO dtos = 2;
+}
+
+// Dict which maps a string key to a FlowStatisticDTO
+message FlowStatisticDict {
+  string key = 1;
+  repeated FlowStatisticDTO dtos = 2;
+}
+
+// Dict which maps a string key to a OSSECIdsAlertCountersDTO
+message OSSECIdsAlertCountersDict {
+  string key = 1;
+  repeated OSSECIdsAlertCountersDTO dtos = 2;
+}
+
+// Dict which maps a string key to a HostMetricsDataDTO
+message HostMetricsDict {
+  string key = 1;
+  repeated HostMetricsDataDTO dtos = 2;
+}
+
+// Dict which maps a string key to a DockerStatsDTO
+message DockerStatsDict {
+  string key = 1;
+  repeated DockerStatsDTO dtos = 2;
+}
+
+// DTO with data about avg flow statistics
+message AvgPortStatisticDTO {
+  float timestamp = 1;
+  string datapath_id = 2;
+  int64 total_num_received_packets = 3;
+  int64 total_num_received_bytes = 4;
+  int64 total_num_received_errors = 5;
+  int64 total_num_transmitted_packets = 6;
+  int64 total_num_transmitted_bytes = 7;
+  int64 total_num_transmitted_errors = 8;
+  int64 total_num_received_dropped = 9;
+  int64 total_num_transmitted_dropped = 10;
+  int64 total_num_received_frame_errors = 11;
+  int64 total_num_received_overrun_errors = 12;
+  int64 total_num_received_crc_errors = 13;
+  int64 total_num_collisions = 14;
+  int64 avg_duration_nanoseconds = 15;
+  int64 avg_duration_seconds = 16;
+}
+
+// DTO with data about avg flow statistics
+message AvgFlowStatisticDTO {
+  float timestamp = 1;
+  string datapath_id = 2;
+  int64 total_num_packets = 3;
+  int64 total_num_bytes = 4;
+  int64 avg_duration_nanoseconds = 5;
+  int64 avg_duration_seconds = 6;
+  int64 avg_hard_timeout = 7;
+  int64 avg_idle_timeout = 8;
+  int64 avg_priority = 9;
+  int64 avg_cookie = 10;
+}
+
+// DTO with data about agg flow statistics
+message AggFlowStatisticDTO {
+  float timestamp = 1;
+  string datapath_id = 2;
+  int64 total_num_packets = 3;
+  int64 total_num_bytes = 4;
+  int64 total_num_flows = 5;
+}
+
+// DTO with data about port statistics
+message PortStatisticDTO {
+  float timestamp = 1;
+  string datapath_id = 2;
+  int64 port = 3;
+  int64 num_received_packets = 4;
+  int64 num_received_bytes = 5;
+  int64 num_received_errors = 6;
+  int64 num_transmitted_packets = 7;
+  int64 num_transmitted_bytes = 8;
+  int64 num_transmitted_errors = 9;
+  int64 num_received_dropped = 10;
+  int64 num_transmitted_dropped = 11;
+  int64 num_received_frame_errors = 12;
+  int64 num_received_overrun_errors = 13;
+  int64 num_received_crc_errors = 14;
+  int64 num_collisions = 15;
+  int64 duration_nanoseconds = 16;
+  int64 duration_seconds = 17;
+}
+
+// DTO with data about flow statistics
+message FlowStatisticDTO {
+  float timestamp = 1;
+  string datapath_id = 2;
+  string in_port = 3;
+  string out_port = 4;
+  string dst_mac_address = 5;
+  int64 num_packets = 6;
+  int64 num_bytes = 7;
+  int64 duration_nanoseconds = 8;
+  int64 duration_seconds = 9;
+  int64 hard_timeout = 10;
+  int64 idle_timeout = 11;
+  int64 priority = 12;
+  int64 cookie = 13;
+}
+
+// DTO with data about OSSEC IDS alerts
+message OSSECIdsAlertCountersDTO {
+  repeated int32 level_alerts = 1;
+  repeated int32 group_alerts = 2;
+  int32 severe_alerts = 3;
+  int32 warning_alerts = 4;
+  int32 total_alerts = 5;
+  float alerts_weighted_by_level = 6;
+  string ip = 7;
+  float ts = 8;
+}
+
+// DTO with data about Snort alerts
+message SnortIdsAlertCountersDTO {
+  repeated int32 priority_alerts = 1;
+  repeated int32 class_alerts = 2;
+  int32 severe_alerts = 3;
+  int32 warning_alerts = 4;
+  float alerts_weighted_by_priority = 5;
+  string ip = 6;
+  float ts = 7;
+}
+
+// Dict which maps a string key to a SnortIdsIpAlertCountersDTO
+message SnortIdsIpAlertCountersDict {
+  string key = 1;
+  repeated SnortIdsIpAlertCountersDTO dtos = 2;
+}
+
+// Dict which maps a string key to a SnortIdsAlertCountersDTO
+message SnortIdsAlertCountersDict {
+  string key = 1;
+  repeated SnortIdsAlertCountersDTO dtos = 2;
+}
+
+// Dict which maps a string key to a SnortIdsRuleCountersDTO
+message SnortIdsRuleCountersDict {
+  string key = 1;
+  repeated SnortIdsRuleCountersDTO dtos = 2;
+}
+
+// DTO with data about Snort alerts
+message SnortIdsIpAlertCountersDTO {
+  repeated int32 priority_alerts = 1;
+  repeated int32 class_alerts = 2;
+  int32 severe_alerts = 3;
+  int32 warning_alerts = 4;
+  float alerts_weighted_by_priority = 5;
+  string ip = 6;
+  float ts = 7;
+  string alert_ip = 8;
+}
+
+// DTO with data about Snort rule alerts
+message SnortIdsRuleCountersDTO {
+  repeated string rule_ids = 1;
+  repeated int32 rule_alert_counts = 2;
+  string ip = 3;
+  float ts = 4;
+}
+
+
+// DTO with data about an attacker action
+message EmulationAttackerActionDTO {
+  int32 id = 1;
+  string name = 2;
+  repeated string cmds = 3;
+  int32 type = 4;
+  string descr = 5;
+  repeated string ips = 6;
+  int32 index = 7;
+  int32 action_outcome = 8;
+  repeated string alt_cmds = 9;
+  float execution_time = 10;
+  float ts = 11;
+  string vulnerability = 12;
+  bool backdoor = 13;
+}
+
+// DTO with data about a defender action
+message EmulationDefenderActionDTO {
+  int32 id = 1;
+  string name = 2;
+  repeated string cmds = 3;
+  int32 type = 4;
+  string descr = 5;
+  repeated string ips = 6;
+  int32 index = 7;
+  int32 action_outcome = 8;
+  repeated string alt_cmds = 9;
+  float execution_time = 10;
+  float ts = 11;
+}
+
+// DTO with host metrics
+message HostMetricsDataDTO {
+  int32 num_logged_in_users = 1;
+  int32 num_failed_login_attempts = 2;
+  int32 num_open_connections = 3;
+  int32 num_login_events = 4;
+  int32 num_processes = 5;
+  int32 num_users = 6;
+  string ip = 7;
+  float ts = 8;
+}
+
+// DTO with docker statistics
+message DockerStatsDTO {
+  float pids = 1;
+  string timestamp = 2;
+  float cpu_percent = 3;
+  float mem_current = 4;
+  float mem_total = 5;
+  float mem_percent = 6;
+  float blk_read = 7;
+  float blk_write = 8;
+  float net_rx = 9;
+  float net_tx = 10;
+  string container_name = 11;
+  string ip = 12;
+  float ts = 13;
+}
+
+// DTO with client population metrics
+message ClientPopulationMetricsDTO {
+  string ip = 1;
+  float ts = 2;
+  int32 num_clients = 3;
+  float rate = 4;
+  float service_time = 5;
+}
+
+// Message that the client sends to get the flask logs
+message GetClusterManagerLogsMsg {}
+
+// Message that the client sends when requesting to get logs of a specific container
+message GetContainerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific client manager
+message GetClientManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific kafka manager
+message GetKafkaManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific kafka server
+message GetKafkaLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific Snort IDS
+message GetSnortIdsLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific Snort IDS manager
+message GetSnortIdsManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific OSSEC IDS manager
+message GetOSSECIdsManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific OSSEC IDS
+message GetOSSECIdsLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific host manager
+message GetHostManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific traffic manager
+message GetTrafficManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to get logs of a specific ELK manager
+message GetElkManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific ELK stack
+message GetElkLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific Ryu manager
+message GetRyuManagerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get logs of a specific Ryu controller
+message GetRyuControllerLogsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Ryu monitor thread of a given execution
+message StopRyuMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Ryu monitor thread of a given execution
+message StartRyuMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Host manager threads of a specific execution
+message StopHostMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Host manager threads of a specific execution
+message StopHostMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends to remove a Kibana tunnel
+message RemoveKibanaTunnelMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to create a Kibana tunnel
+message CreateKibanaTunnelMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to request information about Kibana tunnels
+message ListKibanaTunnelsMsg {}
+
+// Message that the server returns when the client requests information about the Kibana tunnels
+message KibanaTunnelsDTO {
+  repeated KibanaTunnelDTO tunnels = 1;
+}
+
+// Message that the server returns when the client requests information about the Kibana tunnels
+message KibanaTunnelDTO {
+  int32 port = 1;
+  string ip = 2;
+  string emulation = 3;
+  int32 ipFirstOctet = 4;
+}
+
+// Message that the client sends to remove a Ryu tunnel
+message RemoveRyuTunnelMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to request to create a Ryu tunnel
+message CreateRyuTunnelMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to request information about Ryu tunnels
+message ListRyuTunnelsMsg {}
+
+// Message that the server returns when the client requests information about the Ryu tunnels
+message RyuTunnelsDTO {
+  repeated RyuTunnelDTO tunnels = 1;
+}
+
+// Message that the server returns when the client requests information about the Ryu tunnels
+message RyuTunnelDTO {
+  int32 port = 1;
+  string ip = 2;
+  string emulation = 3;
+  int32 ipFirstOctet = 4;
+}
+
+// Message that the client sends when requesting to get the statuses of all Snort IDS monitor threads
+message SnortIdsMonitorThreadStatusesDTO {
+  repeated SnortIdsStatusDTO snortIDSStatuses = 1;
+}
+
+// Message that the client sends when requesting to get the Snort IDS managers info
+message GetSnortIdsManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to to get the statuses of all Snort IDS monitor threads
+message GetSnortIdsMonitorThreadStatusesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop all OSSEC IDSes monitor threads
+message StopSnortIdsMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop a specific Snort IDS manager
+message StopSnortIdsManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start a specific Snort manager
+message StartSnortIdsManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop Snort managers
+message StopSnortIdsManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start Snort IDS managers
+message StartSnortIdsManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start a specific Snort IDS
+message StartSnortMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start a specific Snort IDS monitor thread
+message StartSnortIdsMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start all Snort IDS monitor thread of a given execution
+message StartSnortIdsMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop a specific Snort IDS
+message StopSnortMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop a specific Snort IDS monitor thread
+message StopSnortIdsMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop the Snort IDSes of a specific execution
+message StopSnortIdsesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Snort IDSes Monitor threads of a specific execution
+message StopSnortIdsesMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the Ryu managers info
+message GetRyuManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Ryu monitor of a specific execution
+message StopRyuMonitorServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Ryu monitor of a specific execution
+message StartRyuMonitorServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop Ryu of a specific execution
+message StopRyuServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start Ryu of a specific execution
+message StartRyuServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the status of teh Ryu manager of a given execution
+message GetRyuServiceStatusMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Ryu manager of a given execution
+message StopRyuManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Ryu manager of a given execution
+message StartRyuManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the OSSEC IDS managers info
+message GetOSSECIDSManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the statuses of all OSSEC IDS monitor threads
+message OSSECIdsMonitorThreadStatusesDTO {
+  repeated OSSECIdsStatusDTO ossecIDSStatuses = 1;
+}
+
+// Message that the client sends when requesting to stop all OSSEC IDSes monitor threads
+message GetOSSECIDSMonitorThreadStatusesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop all OSSEC IDSes monitor threads
+message StopOSSECIDSMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop a specific OSSEC IDSes monitor thread
+message StopOSSECIDSMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start a specific OSSEC IDSes monitor thread
+message StartOSSECIDSMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop a specific OSSEC IDS manager
+message StopOSSECIDSManager {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start a specific OSSEC IDS manager
+message StartOSSECIDSManager {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop OSSEC IDS managers
+message StopOSSECIDSManagers {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start OSSEC IDS managers
+message StartOSSECIDSManagers {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start a specific OSSEC IDS
+message StartOSSECIDSMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop a specific OSSEC IDS
+message StopOSSECIDSMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start the OSSEC IDSes
+message StartOSSECIDSesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the OSSEC IDSes
+message StopOSSECIDSesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the kafka managers info
+message GetKafkaManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Kafka server of a given execution
+message StartKafkaServerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Kafka server of a given execution
+message StopKafkaServerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the status of Kafka in a given execution
+message GetKafkaManagerStatusMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create Kafka topics of a given execution
+message CreateKafkaTopicsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Kafka manager of a specific execution
+message StopKafkaManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Kafka manager of a specific execution
+message StartKafkaManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the host managers info
+message GetHostManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to request the statuses of host monitor threads
+message GetHostMonitorThreadsStatusesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the filebeat configuration of a specific container
+message ApplyFileBeatConfigMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to apply the packetbeat configuration of a specific container
+message ApplyPacketBeatConfigMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to apply the metricbeat configuration of a specific container
+message ApplyMetricBeatConfigMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to apply the heartbeat configuration of a specific container
+message ApplyHeartBeatConfigMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+
+// Message that the client sends when requesting to stop filebeat of a specific container in an execution
+message StopFileBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop packetbeat of a specific container in an execution
+message StopPacketBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop metricbeat of a specific container in an execution
+message StopMetricBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start heartbeat of a specific container in an execution
+message StopHeartBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start filebeat of a specific container in an execution
+message StartFileBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+  string containerIp = 4;
+}
+
+// Message that the client sends when requesting to start packetbeat of a specific container in an execution
+message StartPacketBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+  string containerIp = 4;
+}
+
+// Message that the client sends when requesting to start metricbeat of a specific container in an execution
+message StartMetricBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+  string containerIp = 4;
+}
+
+// Message that the client sends when requesting to start heartbeat of a specific container in an execution
+message StartHeartBeatMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+  string containerIp = 4;
+}
+
+// Message that the client sends when requesting to start the Host manager threads of a specific execution
+message StartHostMonitorThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop the heartbeats of a specific execution
+message StopHeartbeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the packetbeats of a specific execution
+message StopPacketbeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the filebeats of a specific execution
+message StopFilebeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the metricbeats of a specific execution
+message StopMetricbeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Host manager threads of a specific execution
+message StartHostMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the Host manager of a specific container
+message StopHostManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start the Host managers of a specific container
+message StartHostManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop the Host managers of a specific execution
+message StopHostManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when requested for the elk managers info
+message ExecutionInfoDTO {
+  string emulationName = 1;
+  int32 executionId = 2;
+  SnortIdsManagersInfoDTO snortIdsManagersInfo = 3;
+  OSSECIdsManagersInfoDTO ossecIdsManagersInfo = 4;
+  KafkaManagersInfoDTO kafkaManagersInfo = 5;
+  HostManagersInfoDTO hostManagersInfo = 6;
+  ClientManagersInfoDTO clientManagersInfo = 7;
+  DockerStatsManagersInfoDTO dockerStatsManagersInfo = 8;
+  RunningContainersDTO runningContainers = 9;
+  StoppedContainersDTO stoppedContainers = 10;
+  TrafficManagersInfoDTO trafficManagersInfoDTO = 11;
+  DockerNetworksDTO activeNetworks = 12;
+  ElkManagersInfoDTO elkManagersInfoDTO = 13;
+  RyuManagersInfoDTO ryuManagersInfoDTO = 14;
+}
+
+// Message that the server returns when requested for the Ryu managers info
+message RyuManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool ryuManagersRunning = 5;
+  repeated RyuManagerStatusDTO ryuManagersStatuses = 6;
+  int32 localControllerWebPort = 7;
+  string physicalServerIp = 8;
+}
+
+//Message that the server returns when asked about the status of the Ryu manager
+message RyuManagerStatusDTO {
+  bool ryu_running = 1;
+  bool monitor_running = 2;
+  int32 port = 3;
+  int32 web_port = 4;
+  string controller = 5;
+  string kafka_ip = 6;
+  int32 kafka_port = 7;
+  int32 time_step_len = 8;
+}
+
+// Message that the server returns when requested for the Host managers info
+message HostManagersInfoDTO {
+  repeated string ips = 21;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool hostManagersRunning = 5;
+  repeated HostManagerStatusDTO hostManagersStatuses = 6;
+}
+
+//Message that the server returns when asked about the statuses of the Host managers
+message HostManagerStatusesDTO {
+  repeated HostManagerStatusDTO hostManagerStatuses= 1;
+}
+
+//Message that the server returns when asked about the status of the Host manager
+message HostManagerStatusDTO {
+  bool monitor_running = 1;
+  bool filebeat_running = 2;
+  bool packetbeat_running = 3;
+  bool metricbeat_running = 4;
+  bool heartbeat_running = 5;
+  string ip = 6;
+}
+
+// Message that the server returns when requested for the Kafka managers info
+message KafkaManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool kafkaManagersRunning = 5;
+  repeated KafkaStatusDTO kafkaManagersStatuses = 6;
+}
+
+//Message that the server returns when asked about the status of the Kafka manager
+message KafkaStatusDTO {
+  bool running = 1;
+  repeated string topics = 2;
+}
+
+// Message that the server returns when requested for the OSSEC IDS managers info
+message OSSECIdsManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool ossecIdsManagersRunning = 5;
+  repeated OSSECIdsStatusDTO ossecIdsManagersStatuses = 6;
+}
+
+//Message that the server returns when asked about the status of the OSSEC IDS manager
+message OSSECIdsStatusDTO {
+  bool monitor_running = 1;
+  bool ossec_ids_running = 2;
+}
+
+// Message that the server returns when requested for the Snort IDS managers info
+message SnortIdsManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool snortIdsManagersRunning = 5;
+  repeated SnortIdsStatusDTO snortIdsManagersStatuses = 6;
+}
+
+//Message that the server returns when asked about the status of the Snort IDS manager
+message SnortIdsStatusDTO {
+  bool monitor_running = 1;
+  bool snort_ids_running = 2;
+}
+
+// Message that the client sends when requesting to get information about a given execution
+message GetExecutionInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the containers of a given execution
+message StopContainersOfExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the containers of a given execution
+message RunContainerMsg {
+  string image = 1;
+  string name = 2;
+  int32 memory = 3;
+  int32 num_cpus = 4;
+  bool create_network = 5;
+  string version = 6;
+}
+
+// Message that the client sends when requesting to start the containers of a given execution
+message StartContainersOfExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the elk managers info
+message GetElkManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when requested for the elk managers info
+message ElkManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool elkManagersRunning = 5;
+  repeated ElkStatusDTO elkManagersStatuses = 6;
+  int32 localKibanaPort = 7;
+  string physicalServerIp = 8;
+}
+
+// Message that the client sends when requesting to stop logstash for a specific execution
+message StopLogstashServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start logstash for a specific execution
+message StartLogstashServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop Kibana for a specific execution
+message StopKibanaServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start Kibana for a specific execution
+message StartKibanaServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop Elastic for a specific execution
+message StopElasticServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start Elastic for a specific execution
+message StartElasticServiceMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the ELK stack of a specific execution
+message StopElkStackMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when requested about status of the ELk stack
+message ElkStatusDTO {
+  bool elasticRunning = 1;
+  bool kibanaRunning = 2;
+  bool logstashRunning = 3;
+}
+
+// Message that the client sends when requesting to get the status of the ELK stack and the manager
+message GetElkStackStatusMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the elk manager
+message StopElkManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the elk manager
+message StartElkManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to get the docker stats managers info for a specific execution
+message GetDockerStatsManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when requested for the docker stats managers info
+message DockerStatsManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool dockerStatsManagersRunning = 5;
+  repeated DockerStatsMonitorStatusDTO dockerStatsManagersStatuses = 6;
+}
+
+// Message that the client sends to remove all CSLE docker networks
+message RemoveAllDockerNetworksMsg {}
+
+// Message that the client sends to remove a list of docker network
+message RemoveDockerNetworksMsg {
+  repeated string networks = 1;
+}
+
+// Message that the server returns when requested by the client, contains info about the docker stats monitor
+message DockerStatsMonitorStatusDTO {
+  int32 num_monitors = 1;
+  repeated string emulations = 2;
+  repeated int32 emulation_executions = 3;
+}
+
+// Message that the client sends to get the status of the docker stats manager of a specific execution
+message GetDockerStatsManagerStatusMsg {
+  int32 port = 1;
+}
+
+// Message that the client sends to stop a dockerStatsManager thread for an execution
+message StopDockerStatsManagerThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create emulation networks
+message CreateEmulationNetworksMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to list all stopped containers
+message ListAllStoppedContainersMsg {}
+
+//DTO with data related to all stopped containers
+message StoppedContainersDTO {
+  repeated DockerContainerDTO stoppedContainers = 1;
+}
+
+// Message that the client sends when requesting to list all running emulations
+message ListAllRunningEmulationsMsg {}
+
+//DTO with data related to all running emulations
+message RunningEmulationsDTO {
+  repeated string runningEmulations = 1;
+}
+
+// Message that the client sends when requesting to list all running containers
+message ListAllRunningContainersMsg {}
+
+//DTO with data related to all running containers
+message RunningContainersDTO {
+  repeated DockerContainerDTO runningContainers = 1;
+}
+
+//DTO with data related to a running container
+message DockerContainerDTO {
+  string name = 1;
+  string image = 2;
+  string ip = 3;
+}
+
+// Message that the client sends when requesting to start a specific container
+message StartContainerMsg {
+  string name = 1;
+}
+
+// Message that the client sends when requesting to start all stopped containers
+message StartAllStoppedContainersMsg {}
+
+// Message that the client sends when requesting to list all Docker networks
+message ListAllDockerNetworksMsg {}
+
+// Message that the server returns when requested for the Docker networks
+message DockerNetworksDTO {
+  repeated string networks = 1;
+  repeated int32 network_ids = 2;
+}
+
+// Message that the server returns when requested for the container images
+message ContainerImagesDTO {
+  repeated ContainerImageDTO images = 1;
+}
+
+// DTO for a specific container image
+message ContainerImageDTO {
+  string repoTags = 1;
+  string created = 2;
+  string os = 3;
+  string architecture = 4;
+  int64 size = 5;
+}
+
+// Message that the client sends when requesting to list all container images
+message ListAllContainerImagesMsg {}
+
+// Message that the client sends when requesting to remove a specific container image
+message RemoveContainerImageMsg {
+  string name = 1;
+}
+
+// Message that the client sends when requesting to remove all container images
+message RemoveAllContainerImagesMsg {}
+
+// Message that the client sends when requesting to remove all stopped containers
+message RemoveAllStoppedContainersMsg {}
+
+// Message that the client sends when requesting to remove a specific container
+message RemoveContainerMsg {
+  string name = 1;
+}
+
+// Message that the client sends when requesting to stop a specific container
+message StopContainerMsg {
+  string name = 1;
+}
+
+// Message that the client sends when requesting to stop all running CSLE containers
+message StopAllRunningContainersMsg {}
+
+// Message that the client sends when requesting to get the traffic managers info
+message GetTrafficManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when requested for the traffic managers info
+message TrafficManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool trafficManagersRunning = 5;
+  repeated TrafficManagerInfoDTO trafficManagersStatuses = 6;
+}
+
+// Message that the server returns when requested for the info of a specific traffic manager
+message TrafficManagerInfoDTO {
+  bool running = 1;
+  string script = 2;
+}
+
+// Message that the server returns when requested for the client managers info
+message ClientManagersInfoDTO {
+  repeated string ips = 1;
+  repeated int32 ports = 2;
+  string emulationName = 3;
+  int32 executionId = 4;
+  repeated bool clientManagersRunning = 5;
+  repeated GetNumClientsDTO clientManagersStatuses = 6;
+}
+
+// Message that the client sends when requesting to get the client managers info
+message GetClientManagersInfoMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start a specific traffic generator
+message StartTrafficGeneratorMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop a specific traffic generator
+message StopTrafficGeneratorMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to stop all traffic generators of a given execution
+message StopTrafficGeneratorsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the server returns when the client requested the number of clients of a given execution
+message GetNumClientsDTO {
+  int32 num_clients = 1;
+  bool client_process_active = 2;
+  bool producer_active = 3;
+  int32 clients_time_step_len_seconds = 4;
+  int32 producer_time_step_len_seconds = 5;
+}
+
+// Message that the client sends when requesting to get the number of active clients of an execution
+message GetNumActiveClientsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the client population of a specific execution
+message StopClientPopulationMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the client manager of a specific execution
+message StopClientManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the client manager of a specific execution
+message StartClientManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop all traffic managers of a given execution
+message StopTrafficManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop a specific traffic manager
+message StopTrafficManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends when requesting to start a specific traffic manager
+message StartTrafficManagerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  string containerIp = 3;
+}
+
+// Message that the client sends to clean all executions
+message CleanAllExecutionsMsg {}
+
+// Message that the client sends to stop all executions
+message StopAllExecutionsMsg {}
+
+// Message that the client sends to stop a given execution
+message StopExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to clean a given execution
+message CleanExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to stop all executions of a given emulation
+message StopAllExecutionsOfEmulationMsg {
+  string emulation = 1;
+}
+
+// Message that the client sends to clean all executions of a given emulation
+message CleanAllExecutionsOfEmulationMsg {
+  string emulation = 1;
+}
+
+// Message that the client sends to get the log file names in the /var/log/csle directory
+message GetCsleLogFilesMsg {}
+
+// Message that the client sends to get a given log file
+message GetLogFileMsg {
+  string name = 1;
+}
+
+// Message that the client sends when requesting to start containers of a given emulation execution
+message StartContainersInExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to attach containers of a given emulation execution to networks
+message AttachContainersToNetworksInExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to install CSLE libraries on containers that are part of an execution
+message InstallLibrariesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the kafka config to a given execution
+message ApplyKafkaConfigMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply start the SDN controller of an execution
+message StartSdnControllerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply resource constraints to containers of an emulation
+message ApplyResouceConstraintsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create OvsSwitches
+message CreateOvsSwitchesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to test ping between containers in an execution
+message PingExecutionMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to configure OVS on an execution
+message ConfigureOvsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the SDN controller monitor in an execution
+message StartSdnControllerMonitorMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create users of an execution
+message CreateUsersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create vulnerabilities of an execution
+message CreateVulnsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create flags of an execution
+message CreateFlagsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to create the topology of an execution
+message CreateTopologyMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start traffic managers of a given execution
+message StartTrafficManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start traffic generators of a given execution
+message StartTrafficGeneratorsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the client population of a specific execution
+message StartClientPopulationMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the client Kafka producer of a specific execution
+message StartKafkaClientProducerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to stop the client Kafka producer of a specific execution
+message StopKafkaClientProducerMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Snort IDSes of a specific execution
+message StartSnortIdsesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Snort IDSes Monitor threads of a specific execution
+message StartSnortIdsesMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the OSSEC IDSes of a specific execution
+message StartOSSECIdsesMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the OSSEC IDSes monitor threads of a specific execution
+message StartOSSECIdsesMonitorThreadsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the ELK stack of a specific execution
+message StartElkStackMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the Host managers of a specific execution
+message StartHostManagersMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the filebeat configurations of a specific execution
+message ApplyFileBeatConfigsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the packetbeat configurations of a specific execution
+message ApplyPacketBeatConfigsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the metricbeat configurations of a specific execution
+message ApplyMetricBeatConfigsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to apply the heartbeat configurations of a specific execution
+message ApplyHeartBeatConfigsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends when requesting to start the filebeats of an execution of a specific execution
+message StartFileBeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+}
+
+// Message that the client sends when requesting to start the packetbeats of an execution
+message StartPacketBeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+}
+
+// Message that the client sends when requesting to start the metricbeats of an execution
+message StartMetricBeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+}
+
+// Message that the client sends when requesting to start the heartbeats of an execution
+message StartHeartBeatsMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+  bool initialStart = 3;
+}
+
+// Message that the client sends to get the docker statsmanager logs
+message GetDockerStatsManagerLogsMsg {}
+
+// Message that the client sends to get the Prometheus logs
+message GetPrometheusLogsMsg {}
+
+// Message that the client sends to get the Node exporter logs
+message GetNodeExporterLogsMsg {}
+
+// Message that the client sends to get the cAdvisor logs
+message GetCAdvisorLogsMsg {}
+
+// Message that the client sends to get the pgAdming logs
+message GetPgAdminLogsMsg {}
+
+// Message that the client sends to get the grafana logs
+message GetGrafanaLogsMsg {}
+
+// Message that the client sends to get the nginx logs
+message GetNginxLogsMsg {}
+
+// Message that the client sends to get the docker logs
+message GetDockerLogsMsg {}
+
+// Message that the client sends to get the posgresql logs
+message GetPostgreSQLLogsMsg {}
+
+// Message that the client sends to get the flask logs
+message GetFlaskLogsMsg {}
+
+// Message that the server returns after a request for logs
+message LogsDTO {
+  repeated string logs = 1;
+}
+
+// Message that the server returns after executing an operation requested by a client
+message OperationOutcomeDTO {
+  bool outcome = 1;
+}
+
+// Message that the client sends to get the status of the node
+message GetNodeStatusMsg {}
+
+// Message that the server returns when requested by the client, contains info about node's status
+message NodeStatusDTO {
+  string ip = 1;
+  bool leader = 2;
+  bool cAdvisorRunning = 3;
+  bool prometheusRunning = 4;
+  bool grafanaRunning = 5;
+  bool pgAdminRunning = 6;
+  bool nginxRunning = 7;
+  bool flaskRunning = 8;
+  bool dockerStatsManagerRunning = 9;
+  bool nodeExporterRunning = 10;
+  bool postgreSQLRunning = 11;
+  bool dockerEngineRunning = 12;
+}
+
+// Message that the server returns when changing the status of a service
+message ServiceStatusDTO {
+  bool running = 1;
+}
+
+// Message that the client sends to start PostgreSQL
+message StartPostgreSQLMsg {}
+
+// Message that the client sends to start cAdvisor
+message StartCAdvisorMsg {}
+
+// Message that the client sends to start node exporter
+message StartNodeExporterMsg {}
+
+// Message that the client sends to start grafana
+message StartGrafanaMsg {}
+
+// Message that the client sends to start Prometheus
+message StartPrometheusMsg {}
+
+// Message that the client sends to start pgAdmin
+message StartPgAdminMsg {}
+
+// Message that the client sends to start nginx
+message StartNginxMsg {}
+
+// Message that the client sends to start flask
+message StartFlaskMsg {}
+
+// Message that the client sends to start dockerStatsManager
+message StartDockerStatsManagerMsg {}
+
+// Message that the client sends to start a dockerStatsManager thread for an execution
+message StartDockerStatsManagerThreadMsg {
+  string emulation = 1;
+  int32 ipFirstOctet = 2;
+}
+
+// Message that the client sends to start the docker engine
+message StartDockerEngineMsg {}
+
+// Message that the client sends to stop PostgreSQL
+message StopPostgreSQLMsg {}
+
+// Message that the client sends to stop cAdvisor
+message StopCAdvisorMsg {}
+
+// Message that the client sends to stop node exporter
+message StopNodeExporterMsg {}
+
+// Message that the client sends to stop grafana
+message StopGrafanaMsg {}
+
+// Message that the client sends to stop Prometheus
+message StopPrometheusMsg {}
+
+// Message that the client sends to stop pgAdmin
+message StopPgAdminMsg {}
+
+// Message that the client sends to stop nginx
+message StopNginxMsg {}
+
+// Message that the client sends to stop flask
+message StopFlaskMsg {}
+
+// Message that the client sends to stop dockerStatsManager
+message StopDockerStatsManagerMsg {}
+
+// Message that the client sends to stop the docker engine
+message StopDockerEngineMsg {}

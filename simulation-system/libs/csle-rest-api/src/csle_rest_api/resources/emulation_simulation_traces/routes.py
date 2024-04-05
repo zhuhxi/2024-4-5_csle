@@ -1,0 +1,87 @@
+"""
+Routes and sub-resources for the /emulation-simulation-traces resource
+"""
+from typing import Tuple
+from flask import Blueprint, jsonify, request, Response
+import json
+import csle_common.constants.constants as constants
+import csle_rest_api.constants.constants as api_constants
+from csle_common.metastore.metastore_facade import MetastoreFacade
+import csle_rest_api.util.rest_api_util as rest_api_util
+
+# Creates a blueprint "sub application" of the main REST app
+emulation_simulation_traces_bp = Blueprint(
+    api_constants.MGMT_WEBAPP.EMULATION_SIMULATION_TRACES_RESOURCE, __name__,
+    url_prefix=f"{constants.COMMANDS.SLASH_DELIM}{api_constants.MGMT_WEBAPP.EMULATION_SIMULATION_TRACES_RESOURCE}")
+
+
+@emulation_simulation_traces_bp.route("", methods=[api_constants.MGMT_WEBAPP.HTTP_REST_GET,
+                                                   api_constants.MGMT_WEBAPP.HTTP_REST_DELETE])
+def emulation_simulation_traces() -> Tuple[Response, int]:
+    """
+    The /emulation-traces resource.
+
+    :return: A list of emulation traces or a list of ids of the traces or deletes the traces
+    """
+    requires_admin = False
+    if request.method == api_constants.MGMT_WEBAPP.HTTP_REST_DELETE:
+        requires_admin = True
+    authorized = rest_api_util.check_if_user_is_authorized(request=request, requires_admin=requires_admin)
+    if authorized is not None:
+        return authorized
+    if request.method == api_constants.MGMT_WEBAPP.HTTP_REST_GET:
+        # Check if ids query parameter is True, then only return the ids and not the whole list of emulation-simulation
+        # traces
+        ids = request.args.get(api_constants.MGMT_WEBAPP.IDS_QUERY_PARAM)
+        if ids is not None and ids:
+            return emulation_simulation_traces_ids()
+        f = open('/var/log/csle/one_tau.json')
+        d = json.load(f)
+        response = jsonify(d[api_constants.MGMT_WEBAPP.TRAJECTORIES_PROPERTY])
+        response.headers.add(api_constants.MGMT_WEBAPP.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*")
+        return response, constants.HTTPS.OK_STATUS_CODE
+    elif request.method == api_constants.MGMT_WEBAPP.HTTP_REST_DELETE:
+        traces = MetastoreFacade.list_emulation_simulation_traces()
+        for trace in traces:
+            MetastoreFacade.remove_emulation_simulation_trace(trace)
+        response = jsonify({})
+        response.headers.add(api_constants.MGMT_WEBAPP.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*")
+        return response, constants.HTTPS.OK_STATUS_CODE
+    return (jsonify({api_constants.MGMT_WEBAPP.REASON_PROPERTY: "HTTP method not supported"}),
+            constants.HTTPS.BAD_REQUEST_STATUS_CODE)
+
+
+def emulation_simulation_traces_ids() -> Tuple[Response, int]:
+    """
+    :return: An HTTP response with all emulation ids
+    """
+    ids_emulations = MetastoreFacade.list_emulation_simulation_traces_ids()
+    response_dicts = []
+    for tup in ids_emulations:
+        response_dicts.append({
+            api_constants.MGMT_WEBAPP.ID_PROPERTY: tup[0]
+        })
+    response = jsonify(response_dicts)
+    response.headers.add(api_constants.MGMT_WEBAPP.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*")
+    return response, constants.HTTPS.OK_STATUS_CODE
+
+
+@emulation_simulation_traces_bp.route("/<trace_id>", methods=[api_constants.MGMT_WEBAPP.HTTP_REST_GET,
+                                                              api_constants.MGMT_WEBAPP.HTTP_REST_DELETE])
+def emulation_trace(trace_id: int) -> Tuple[Response, int]:
+    """
+    The /emulation-traces/id resource.
+
+    :param trace_id: the id of the trace
+
+    :return: The given trace or delets the trace
+    """
+    trace = MetastoreFacade.get_emulation_trace(id=trace_id)
+    response = jsonify({})
+    if trace is not None:
+        if request.method == api_constants.MGMT_WEBAPP.HTTP_REST_GET:
+            response = jsonify(trace.to_dict())
+        else:
+            MetastoreFacade.remove_emulation_trace(trace)
+    response.headers.add(api_constants.MGMT_WEBAPP.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*")
+    return response, constants.HTTPS.OK_STATUS_CODE
